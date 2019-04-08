@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VRStandardAssets.Utils;
+using UnityEngine.Video;
 
 /// <summary>
 /// 
@@ -20,7 +21,8 @@ public class ChangeSkyBox : MonoBehaviour, IInteractable {
     public VRInteractiveItem vrII; //the VRInteractiveItem that is requried for interacting
     public SkyboxObjectEnableController skyboxChanger; //the object that controls the list of each skybox dependent object.
     public GameObject objToEnable; //the skybox dependent object to enable for this skybox material
-    public Material newSkyboxMaterial; //the material to change the skybox to
+    public VideoClip newSkyboxclip; //the material to change the skybox to
+    public GameObject videoPlayer; //the object playing a video
 
     //this was used to intend to fade the screen to black before changing the skybox, to avoid sudden movement. 
     public float fadeDuration = 1.0f; //how long to fade the screen in/out
@@ -45,12 +47,13 @@ public class ChangeSkyBox : MonoBehaviour, IInteractable {
         if (GlobalStateManager.curState == GameState.InGame)
         {
             //if everything isn't null
-            if (skyboxChanger != null && objToEnable != null && newSkyboxMaterial != null)
+            if (skyboxChanger != null && objToEnable != null && newSkyboxclip != null)
             {
                 //enable the skybox dependent object, disable the others
                 skyboxChanger.EnableObject(objToEnable);
                 //change the skybox material
-                RenderSettings.skybox = newSkyboxMaterial;
+                //RenderSettings.skybox = newSkyboxMaterial;
+                videoPlayer.GetComponent<VideoPlayer>().clip = newSkyboxclip;
 
                 //was intended to fade the screen in then out, however did not work as intended. 
                 //StartCoroutine(FadeInThenOut());
@@ -88,7 +91,8 @@ public class ChangeSkyBox : MonoBehaviour, IInteractable {
         //enable the skybox dependent object, disable the others
         skyboxChanger.EnableObject(objToEnable);
         //change the skybox material
-        RenderSettings.skybox = newSkyboxMaterial;
+        //RenderSettings.skybox = newSkyboxclip;
+        videoPlayer.GetComponent<VideoPlayer>().clip = newSkyboxclip;
 
         //if the camera fade component exists
         if (vrCamFade != null)
