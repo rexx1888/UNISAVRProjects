@@ -9,11 +9,14 @@ using UnityEngine;
 /// This object is intended for use in 'analytics'. kind of.
 /// It has a list of objects attached, which make use of the TimeLookedAtObject script. it will enable/disable these objects when necessary.
 /// 
+/// Edited by David McCann(DESIGNER) in April 2019.
+/// 
 /// </summary>
 
 public class WallOfCubesController : MonoBehaviour {
 
     private TimeLookedAtObject[] listOfTimedObjects;
+    [HideInInspector]
     public GameObject objectsInteractedWithList;
 
     //on start
