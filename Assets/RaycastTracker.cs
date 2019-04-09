@@ -20,13 +20,14 @@ public class RaycastTracker : MonoBehaviour {
     {
         RaycastHit hit;
         //Debug.Log("UPDATE");
-        Ray ray = new Ray(transform.position, transform.forward);
+        Ray ray = new Ray(transform.position, mainCamera.transform.forward);
 
-        ray.GetPoint(105);
-        ray.direction = -ray.direction;
-        Debug.DrawRay(ray.GetPoint(105), ray.direction);
+        //ray.GetPoint(105);
+       // ray.direction = -ray.direction;
+        Ray testRay = new Ray(ray.GetPoint(100), -mainCamera.transform.forward);
+        Debug.DrawRay(ray.GetPoint(100), -mainCamera.transform.forward);
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(testRay, out hit))
         {
             Debug.Log(hit.transform.name);
 
@@ -35,8 +36,10 @@ public class RaycastTracker : MonoBehaviour {
                 //var emitParams = new ParticleSystem.EmitParams();
                 emitParams.position = hit.point;
                 emitParams.velocity = Vector3.zero;
+                emitParams.startColor = Color.red;
+                emitParams.startSize = 0.2f;
                 ParticleSystem.Emit(emitParams, 1);
-                
+                ParticleSystem.Play();
             }
         }
         

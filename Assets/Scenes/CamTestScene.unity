@@ -1777,7 +1777,8 @@ MonoBehaviour:
   vrII: {fileID: 0}
   skyboxChanger: {fileID: 1362647754}
   objToEnable: {fileID: 108924491}
-  newSkyboxMaterial: {fileID: 2100000, guid: c6f97b47731b61341a61d6b4de610324, type: 2}
+  newSkyboxclip: {fileID: 0}
+  videoPlayer: {fileID: 0}
   fadeDuration: 1
 --- !u!114 &219700199
 MonoBehaviour:
@@ -4671,7 +4672,8 @@ MonoBehaviour:
   vrII: {fileID: 0}
   skyboxChanger: {fileID: 1362647754}
   objToEnable: {fileID: 1338528466}
-  newSkyboxMaterial: {fileID: 2100000, guid: 89b306686086d7e4980d1eab3af41a52, type: 2}
+  newSkyboxclip: {fileID: 0}
+  videoPlayer: {fileID: 0}
   fadeDuration: 1
 --- !u!224 &837306842
 RectTransform:
@@ -7542,7 +7544,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
