@@ -10,4 +10,5 @@ The teachers are expecting you to continue making high quality assets in a reali
 As for the unity scene, no lighting is required (because its baked onto textures) just ramp up the ambient intensity so assets are lit from any angle.
 (remember to use mobile shader)
 
-k then bye (>^-^)>
+k then bye (>^-^)> 
+

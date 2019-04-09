@@ -1,23 +1,93 @@
 fileFormatVersion: 2
-guid: 640d7e94fa68877448d6c99fe50dc5c0
+guid: c1ce3326f12fc0b41aab2111bb57c7ba
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: Chair
+    100002: Couch
+    100004: Cupboard
+    100006: Cupboard1
+    100008: Door_01
+    100010: Door_02
+    100012: Door_03
+    100014: Fire_place_ledge
+    100016: Fireplace
+    100018: Floor
+    100020: Floor1
+    100022: //RootNode
+    100024: Table
+    100026: TV
+    100028: Walls
+    100030: Celling
+    100032: Window
+    400000: Chair
+    400002: Couch
+    400004: Cupboard
+    400006: Cupboard1
+    400008: Door_01
+    400010: Door_02
+    400012: Door_03
+    400014: Fire_place_ledge
+    400016: Fireplace
+    400018: Floor
+    400020: Floor1
+    400022: //RootNode
+    400024: Table
+    400026: TV
+    400028: Walls
+    400030: Celling
+    400032: Window
     2100000: lambert1
-    2100002: lambert2
-    2100004: lambert5
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: WineGlass_01_low
-    4300002: Wine_Glass
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: 529e9a9219132ca4e9dc3cd74c79c39a, type: 2}
+    2300000: Chair
+    2300002: Couch
+    2300004: Cupboard
+    2300006: Cupboard1
+    2300008: Door_01
+    2300010: Door_02
+    2300012: Door_03
+    2300014: Fire_place_ledge
+    2300016: Fireplace
+    2300018: Floor
+    2300020: Floor1
+    2300022: Table
+    2300024: TV
+    2300026: Walls
+    2300028: Celling
+    2300030: Window
+    3300000: Chair
+    3300002: Couch
+    3300004: Cupboard
+    3300006: Cupboard1
+    3300008: Door_01
+    3300010: Door_02
+    3300012: Door_03
+    3300014: Fire_place_ledge
+    3300016: Fireplace
+    3300018: Floor
+    3300020: Floor1
+    3300022: Table
+    3300024: TV
+    3300026: Walls
+    3300028: Celling
+    3300030: Window
+    4300000: Door_01
+    4300002: Door_02
+    4300004: Walls
+    4300006: Door_03
+    4300008: Table
+    4300010: Cupboard
+    4300012: Couch
+    4300014: Fire_place_ledge
+    4300016: TV
+    4300018: Fireplace
+    4300020: Chair
+    4300022: Floor
+    4300024: Cupboard1
+    4300026: Floor1
+    4300028: Window
+    4300030: Celling
+    2186277476908879412: ImportLogs
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -48,7 +118,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 8
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
