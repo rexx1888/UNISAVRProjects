@@ -1685,6 +1685,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114091633769839138, guid: 6c548442a11451e4eaa1b9eb45527a6d,
+        type: 2}
+      propertyPath: stateToChangeTo
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c548442a11451e4eaa1b9eb45527a6d, type: 2}
   m_IsPrefabAsset: 0
@@ -2666,7 +2671,7 @@ MonoBehaviour:
   setDifficulty: 0
   difficultyToChangeTo: 1
   loadScene: 1
-  sceneToLoad: 2
+  sceneToLoad: 0
 --- !u!114 &1748655186
 MonoBehaviour:
   m_ObjectHideFlags: 0
