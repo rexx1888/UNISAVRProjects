@@ -12,13 +12,16 @@ using UnityEngine.UI;
 /// 
 /// this is used for displaying the 'analytics' objects. Each of these objects check how long they have been looked at, and the amount they were looked at. it was an experiment, i'm personally not happy with it.
 /// 
+/// Modified by Camryn Schriever 2019
+/// 
 /// 
 /// </summary>
 
 [RequireComponent(typeof(VRInteractiveItem))]
+[RequireComponent(typeof(ScriptableObjectFloat))]
 public class FinishApplication : MonoBehaviour, IInteractable {
 
-
+    public ScriptableObjectFloat SceneTimer;
 
     public WallOfCubesController wallController; //the controller for the walls surrounding the camera object. 
     public VRInteractiveItem vrII; //the VRInteractiveItem attached to this.
@@ -36,6 +39,9 @@ public class FinishApplication : MonoBehaviour, IInteractable {
             vrII.OnOut += OnHoverExit;
             vrII.OnDoubleClick += Interact;
         }
+
+        //reset the timer to 0 when the scene begins.
+        SceneTimer.value = 0;
     }
 
     //when this object is double clicked on
@@ -46,10 +52,13 @@ public class FinishApplication : MonoBehaviour, IInteractable {
         {
             //enable the wall controller
             wallController.EnableObjects(true);
-        } else
+        } else if (GlobalStateManager.curState == GameState.Finished)
         {
             //otherwise disable it
             wallController.EnableObjects(false);
+
+
+
         }
     }
 
@@ -66,7 +75,12 @@ public class FinishApplication : MonoBehaviour, IInteractable {
 
     }
 
-
+    
+    void Update()
+    {
+        //update the timer for every second.
+        SceneTimer.value += Time.deltaTime;
+    }
 
 
 }
