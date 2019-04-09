@@ -3795,6 +3795,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4247242614712002, guid: 76c2f269b3354714ebce94b2d6ea19dc,
     type: 2}
   m_PrefabInternal: {fileID: 1330151789}
+--- !u!1 &1352596506 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1596070058975204, guid: ebd4e462d5938cb43bd9bd65c77adc37,
+    type: 2}
+  m_PrefabInternal: {fileID: 241831056}
+--- !u!114 &1352596507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1352596506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ccdbbde55c51c4e99a52cf4e2312e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1362647753
 GameObject:
   m_ObjectHideFlags: 0
@@ -4351,6 +4367,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 114224925565309514, guid: 47540015e20273f489e123641104760c,
+        type: 2}
+      propertyPath: SceneTimer
+      value: 
+      objectReference: {fileID: 11400000, guid: 292245e10b9596647899d532273cd1a6,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47540015e20273f489e123641104760c, type: 2}
   m_IsPrefabAsset: 0
