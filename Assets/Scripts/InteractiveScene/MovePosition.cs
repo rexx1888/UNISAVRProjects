@@ -58,4 +58,12 @@ public class MovePosition : MonoBehaviour {
         return point;
     }
 
+    public void ButtonMove(Vector3 targetPoint)
+    {
+        targetPoint = new Vector3(targetPoint.x, Camera.main.transform.position.y, targetPoint.z);
+
+        gameObject.transform.position = targetPoint;
+
+    }
+
 }
