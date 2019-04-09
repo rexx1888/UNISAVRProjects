@@ -3621,9 +3621,9 @@ GameObject:
   - component: {fileID: 940759007}
   - component: {fileID: 940759006}
   - component: {fileID: 940759005}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: HeatMapTestObj
-  m_TagString: HeatMapCapsule
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8246,7 +8246,7 @@ MonoBehaviour:
   particleSystem: {fileID: 940759006}
   timerInterval: 0.5
   sceneTimer: {fileID: 11400000, guid: 292245e10b9596647899d532273cd1a6, type: 2}
-  analytics: {fileID: 0}
+  analytics: {fileID: 11400000, guid: 3838ac923fb26ca4ea1883dce2f70625, type: 2}
 --- !u!135 &940759008
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9743,6 +9743,12 @@ Prefab:
       propertyPath: SceneTimer
       value: 
       objectReference: {fileID: 11400000, guid: 292245e10b9596647899d532273cd1a6,
+        type: 2}
+    - target: {fileID: 114224925565309514, guid: 47540015e20273f489e123641104760c,
+        type: 2}
+      propertyPath: analytics
+      value: 
+      objectReference: {fileID: 11400000, guid: 3838ac923fb26ca4ea1883dce2f70625,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47540015e20273f489e123641104760c, type: 2}

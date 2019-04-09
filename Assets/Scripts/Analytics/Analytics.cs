@@ -8,9 +8,9 @@ public class Analytics : ScriptableObject
 	[SerializeField] public float value;
 
 	
-	public void addAnalytic(float timeStamp, string room)
+	public void addAnalytic(float timeStamp, string room, Vector3 point)
 	{
-		analyticsStorage.Add(new Analytic(timeStamp, room));
+		analyticsStorage.Add(new Analytic(timeStamp, room, point));
 	}
 
 	public List<Analytic> analyticsStorage = new List<Analytic>();
@@ -21,9 +21,12 @@ public struct Analytic
 {
 	public float TimeStamp;
 	public string Room;
-	public Analytic(float timeStamp, string roomName)
+	public Vector3 Point;
+
+	public Analytic(float timeStamp, string roomName, Vector3 point)
 	{
 		TimeStamp = timeStamp;
 		Room = roomName;
+		Point = point;
 	}
 }

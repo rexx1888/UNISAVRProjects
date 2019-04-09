@@ -88,87 +88,25 @@ public class FinishApplication : MonoBehaviour, IInteractable {
 	{
 		if (analytics.analyticsStorage.Count > 0)
 		{
-			//Analytic prevAnalytic = analytics.analyticsStorage[0];
+			Analytic prevAnalytic = analytics.analyticsStorage[0];
 
-			//Mesh connectionMesh = null;
-			//GameObject connectionGO;
-			//Vector3[] connectionVertices;
-			//Color[] connectionColors;
-			//int[] connectionTriangles;
+			GameObject connectionGO;
+			connectionGO = new GameObject("Connections");
 
-			//Color colorConnectionNormal;
-			//Color colorConnectionIntersecting;
-			//float connectionWidthNormal = 1;
-			//float connectionWidthIntersecting = 1;
 
-			//if (connectionMesh == null)
-			//{
-			//	connectionMesh = new Mesh();
-			//	connectionMesh.MarkDynamic();
+			LineRenderer lr = connectionGO.AddComponent<LineRenderer>();
+			lr.startWidth = 0.2f;
+			lr.endWidth = 0.2f;
+			lr.useWorldSpace = true;
+			lr.positionCount = analytics.analyticsStorage.Count;
 
-			//	connectionGO = new GameObject("Connections");
-			//	MeshRenderer mr = connectionGO.AddComponent<MeshRenderer>();
-			//	mr.material = lineMaterial;
-			//	mr.material.renderQueue = 3060;
-			//	MeshFilter mf = connectionGO.AddComponent<MeshFilter>();
-			//	mf.mesh = connectionMesh;
-			//}
 
-			//int connectionCount = seedConnections.Count;
-			//int vertexCount = connectionCount * 4;
-			//int triangleCount = connectionCount * 2;
-
-			//connectionVertices = new Vector3[vertexCount];
-			//connectionTriangles = new int[triangleCount * 3];
-			//connectionColors = new Color[vertexCount];
-			//Vector3[] normals = new Vector3[vertexCount];
-			//Vector2[] uvs = new Vector2[vertexCount];
-
-			//// setup normals
-			//for (int i = 0; i < vertexCount; i++)
-			//{
-			//	normals[i] = Vector3.up;
-			//	connectionColors[i] = Color.white;
-			//}
-
-			//// setup uv's
-			//for (int i = 0; i < connectionCount; i++)
-			//{
-			//	uvs[i * 4 + 0] = Vector2.zero;
-			//	uvs[i * 4 + 1] = Vector2.right;
-			//	uvs[i * 4 + 2] = Vector2.zero;
-			//	uvs[i * 4 + 3] = Vector2.right;
-			//}
-
-			//// setup triangles
-			//for (int i = 0; i < connectionCount; i++)
-			//{
-			//	int index = i * 4;
-			//	connectionTriangles[i * 6 + 0] = index + 0;
-			//	connectionTriangles[i * 6 + 1] = index + 1;
-			//	connectionTriangles[i * 6 + 2] = index + 2;
-			//	connectionTriangles[i * 6 + 3] = index + 1;
-			//	connectionTriangles[i * 6 + 4] = index + 3;
-			//	connectionTriangles[i * 6 + 5] = index + 2;
-			//}
-
-			//connectionMesh.Clear();
-			//connectionMesh.vertices = connectionVertices;
-			//connectionMesh.triangles = connectionTriangles;
-			//connectionMesh.colors = connectionColors;
-			//connectionMesh.normals = normals;
-			//connectionMesh.uv = uvs;
-			//connectionMesh.bounds = new Bounds(Vector3.zero, Vector3.one * 10);
-
-			//UpdateConnectionMesh();
-
-			foreach (Analytic analytic in analytics.analyticsStorage)
+			for (int i = 0; i < analytics.analyticsStorage.Count; i++)
 			{
-
-				
-
-				//prevAnalytic = analytic;
+				lr.SetPosition(i, analytics.analyticsStorage[i].Point);
 			}
+
+			
 		}		
 	}
 }
