@@ -28,6 +28,8 @@ public class MovePosition : MonoBehaviour {
 
     public void ClickMove()
     {
+
+
         Vector3 targetPoint = CheckRayCastHit();
         if(targetGood != false)
         {
@@ -44,6 +46,7 @@ public class MovePosition : MonoBehaviour {
         RaycastHit hit;
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit ))
         {
+			Debug.Log(hit.transform.name);
             if(hit.normal == Vector3.up)
             {
                 point = hit.point;
