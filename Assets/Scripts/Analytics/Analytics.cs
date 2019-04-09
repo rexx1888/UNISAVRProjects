@@ -8,6 +8,10 @@ public class Analytics : ScriptableObject
 	[SerializeField] public float value;
 
 	
+	public void addAnalytic(float timeStamp, string room)
+	{
+		analyticsStorage.Add(new Analytic(timeStamp, room));
+	}
 
 	public List<Analytic> analyticsStorage = new List<Analytic>();
 }

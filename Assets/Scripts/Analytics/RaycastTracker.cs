@@ -15,18 +15,6 @@ public class RaycastTracker : MonoBehaviour {
 
 	public Analytics analytics;
 
-	//public struct Analytic
-	//{
-	//	public float TimeStamp;
-	//	public string Room;
-	//	public Analytic(float timeStamp, string roomName)
-	//	{
-	//		TimeStamp = timeStamp;
-	//		Room = roomName;
-	//	}
-	//}
-
-	//public List<Analytic> analyticsStorage = new List<Analytic>();
 
 	// Use this for initialization
 	void Start () {
@@ -68,15 +56,14 @@ public class RaycastTracker : MonoBehaviour {
 			//store the location of where the user was looking at the scene.
             if (hit.transform.tag == "HeatMapCapsule")
             {
-                emitParams.position = hit.point;
-                emitParams.velocity = Vector3.zero;
-                emitParams.startColor = Color.red;
-                emitParams.startSize = 0.2f;
-                particleSystem.Emit(emitParams, 1);
-                particleSystem.Play();
+                //emitParams.position = hit.point;
+                //emitParams.velocity = Vector3.zero;
+                //emitParams.startColor = Color.red;
+                //emitParams.startSize = 0.2f;
+                //particleSystem.Emit(emitParams, 1);
+                //particleSystem.Play();
 
-
-				//analytics.analyticsStorage.Add(new Analytic(sceneTimer.value, "Test"));
+				analytics.addAnalytic(sceneTimer.value, "Test");
 			}			
         }
     }
