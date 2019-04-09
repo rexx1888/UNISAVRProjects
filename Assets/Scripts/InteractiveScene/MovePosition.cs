@@ -28,10 +28,11 @@ public class MovePosition : MonoBehaviour {
 
     public void ClickMove()
     {
-
-
         Vector3 targetPoint = CheckRayCastHit();
-        if(targetGood != false)
+
+        targetPoint = new Vector3(targetPoint.x, Camera.main.transform.position.y, targetPoint.z);
+
+        if (targetGood != false)
         {
             gameObject.transform.position = targetPoint;
 
