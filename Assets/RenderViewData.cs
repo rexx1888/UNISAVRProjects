@@ -82,18 +82,29 @@ public class RenderViewData : MonoBehaviour {
 
 						//Render each point along the line.
 						GameObject point = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-						Instantiate(point, raycastAnalyticSorted[x][i].Point, Quaternion.identity);
+						//Instantiate(point, raycastAnalyticSorted[x][i].Point, Quaternion.identity);
 						point.transform.parent = raycastTrackerObjects[x];
+						point.transform.position = raycastAnalyticSorted[x][i].Point;
 
 						//render the timecode of each point.
-						//GameObject pointText = new GameObject("Text");
-						//TextMeshPro textMesh = pointText.AddComponent<TextMeshPro>();
-						//textMesh.text = raycastAnalyticSorted[x][i].TimeStamp.ToString();
-						//textMesh.color = Color.black;
+						GameObject pointText = new GameObject("Text");
+						TextMeshPro textMesh = pointText.AddComponent<TextMeshPro>();
+						textMesh.color = Color.black;
+						//format the seconds into time text
+						int minutes = Mathf.FloorToInt(raycastAnalyticSorted[x][i].TimeStamp / 60F);
+						int seconds = Mathf.FloorToInt(raycastAnalyticSorted[x][i].TimeStamp - minutes * 60);
+						string niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+
+
+						textMesh.text = niceTime;
 
 						//set the timeCode as a child (Since textmesh and Mesh Filter don't like eachother)
-						//pointText.transform.parent = point.transform;
-						//Instantiate(pointText, Vector3.zero, Quaternion.identity);
+						pointText.transform.SetParent(point.transform);
+						pointText.transform.localPosition = new Vector3(0, 5, 0);
+
+						//rotate the text to look at the camera
+						pointText.transform.LookAt(Camera.main.transform.position);
+						pointText.transform.rotation = Quaternion.LookRotation(-pointText.transform.forward);
 					}
 
 					//set the parent for the line renderer

@@ -1592,7 +1592,7 @@ GameObject:
   - component: {fileID: 365477886}
   - component: {fileID: 365477885}
   m_Layer: 15
-  m_Name: Loungeroom
+  m_Name: Kitchenroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6301,6 +6301,7 @@ MonoBehaviour:
   raycastTrackerObjects:
   - {fileID: 940759004}
   - {fileID: 1733756186}
+  - {fileID: 365477884}
 --- !u!1 &420632714
 GameObject:
   m_ObjectHideFlags: 0
