@@ -23,13 +23,16 @@ public class FinishApplication : MonoBehaviour, IInteractable {
 
     public ScriptableObjectFloat SceneTimer;
 
-    public WallOfCubesController wallController; //the controller for the walls surrounding the camera object. 
-    public VRInteractiveItem vrII; //the VRInteractiveItem attached to this.
-
+    //public WallOfCubesController wallController; //the controller for the walls surrounding the camera object. 
+    private VRInteractiveItem vrII; //the VRInteractiveItem attached to this.
 	public Analytics analytics;
 
-    //on start
-    public void Start()
+	//Neaten this later.
+	public RenderViewData rvd;
+	
+
+	//on start
+	public void Start()
     {
         //get the vrInteractiveItem component attached to this
         vrII = this.GetComponent<VRInteractiveItem>();
@@ -39,29 +42,18 @@ public class FinishApplication : MonoBehaviour, IInteractable {
             //assign the functions to the delegates
             vrII.OnOver += OnHoverEnter;
             vrII.OnOut += OnHoverExit;
-            vrII.OnDoubleClick += Interact;
+            vrII.OnClick += Interact;
         }
 
         //reset the timer to 0 when the scene begins.
         SceneTimer.value = 0;
     }
 
-    //when this object is double clicked on
+    //when this object is clicked on
     public void Interact()
     {
-        //if the state is in game
-        if (GlobalStateManager.curState == GameState.InGame)
-        {
-            //enable the wall controller
-            wallController.EnableObjects(true);
-        } else if (GlobalStateManager.curState == GameState.Finished)
-        {
-            //otherwise disable it
-            wallController.EnableObjects(false);
-
-
-			DisplayUserViewLine();
-        }
+		GlobalStateManager.ChangeState(GameState.Finished);
+		DisplayUserViewLine();
     }
 
     
@@ -86,27 +78,6 @@ public class FinishApplication : MonoBehaviour, IInteractable {
 
 	void DisplayUserViewLine()
 	{
-		if (analytics.analyticsStorage.Count > 0)
-		{
-			Analytic prevAnalytic = analytics.analyticsStorage[0];
-
-			GameObject connectionGO;
-			connectionGO = new GameObject("Connections");
-
-
-			LineRenderer lr = connectionGO.AddComponent<LineRenderer>();
-			lr.startWidth = 0.2f;
-			lr.endWidth = 0.2f;
-			lr.useWorldSpace = true;
-			lr.positionCount = analytics.analyticsStorage.Count;
-
-
-			for (int i = 0; i < analytics.analyticsStorage.Count; i++)
-			{
-				lr.SetPosition(i, analytics.analyticsStorage[i].Point);
-			}
-
-			
-		}		
+		rvd.ShowViewPath();
 	}
 }

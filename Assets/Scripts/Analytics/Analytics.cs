@@ -14,6 +14,16 @@ public class Analytics : ScriptableObject
 	}
 
 	public List<Analytic> analyticsStorage = new List<Analytic>();
+
+	public int getCount()
+	{
+		return analyticsStorage.Count;
+	}
+
+	public void clearData()
+	{
+		analyticsStorage.Clear();
+	}
 }
 
 

@@ -5,38 +5,40 @@ using UnityEngine;
 public class RaycastTracker : MonoBehaviour {
 
     public Camera mainCamera;
-    public ParticleSystem particleSystem;
-    private ParticleSystem.EmitParams emitParams;
+	//public ParticleSystem particleSystem;
+	//private ParticleSystem.EmitParams emitParams;
 
-    public float timerInterval = 0.5f;
-	public ScriptableObjectFloat sceneTimer;
+	[SerializeField] private float timerInterval = 0.5f;
+	[SerializeField] private ScriptableObjectFloat sceneTimer;
+	[SerializeField] private Analytics analytics;
 
 	private float localTimer;
-	private int layermask = LayerMask.GetMask("ViewTracker");
-
-	public Analytics analytics;
+	private int layermask;
 
 
 	// Use this for initialization
 	void Start () {
 		//emitParams = new ParticleSystem.EmitParams;
 		localTimer = 0;
-		
+		layermask = LayerMask.GetMask("ViewTracker");
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-		//increment local timer by delta time
-		localTimer += Time.deltaTime;
-
-		//if localTimer is larger than the interval, reset localtimer and do the thing.
-		if (localTimer > timerInterval)
+		if (GlobalStateManager.curState == GameState.InGame)
 		{
-			storePoint();
+			//increment local timer by delta time
+			localTimer += Time.deltaTime;
 
-			localTimer = 0;
-		}       
+			//if localTimer is larger than the interval, reset localtimer and do the thing.
+			if (localTimer > timerInterval)
+			{
+				storePoint();
+
+				localTimer = 0;
+			}
+		}
 	}
 	
     private void storePoint()
@@ -47,16 +49,14 @@ public class RaycastTracker : MonoBehaviour {
 
 		//Reverse the ray, so it can collide with the Sphere for tracking where the user is looking.
         Ray testRay = new Ray(ray.GetPoint(100), -mainCamera.transform.forward);
-        Debug.DrawRay(ray.GetPoint(100), -mainCamera.transform.forward);
+        //Debug.DrawRay(ray.GetPoint(100), -mainCamera.transform.forward);
 		
 
         if (Physics.Raycast(testRay, out hit, 150, layermask))
-        {
+        {			
+			//store the location and Name of where the user was looking at the scene.
+			analytics.addAnalytic(sceneTimer.value, hit.transform.name, hit.point);
 			//Debug.Log(hit.transform.name);
-			Debug.Log(hit.point);
-
-			//store the location of where the user was looking at the scene.
-			analytics.addAnalytic(sceneTimer.value, "Test", hit.point);		
         }
     }
 }
