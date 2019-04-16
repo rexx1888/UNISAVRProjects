@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vrII: {fileID: 0}
-  skyboxChanger: {fileID: 0}
+  skyboxChanger: {fileID: 1362647754}
   objToEnable: {fileID: 108924491}
   newSkyboxclip: {fileID: 32900000, guid: a96c7d9e7b5f7744a8b08d6b6cff6e81, type: 3}
   videoPlayer: {fileID: 60338896}
@@ -7728,7 +7728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vrII: {fileID: 0}
-  skyboxChanger: {fileID: 0}
+  skyboxChanger: {fileID: 1362647754}
   objToEnable: {fileID: 1338528466}
   newSkyboxclip: {fileID: 32900000, guid: 97c4079eecfa7d04781d9099043b4db8, type: 3}
   videoPlayer: {fileID: 60338896}
@@ -12865,7 +12865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vrII: {fileID: 0}
-  skyboxChanger: {fileID: 0}
+  skyboxChanger: {fileID: 1362647754}
   objToEnable: {fileID: 108924491}
   newSkyboxclip: {fileID: 32900000, guid: a96c7d9e7b5f7744a8b08d6b6cff6e81, type: 3}
   videoPlayer: {fileID: 60338896}
@@ -13223,7 +13223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vrII: {fileID: 0}
-  skyboxChanger: {fileID: 0}
+  skyboxChanger: {fileID: 1362647754}
   objToEnable: {fileID: 1338528466}
   newSkyboxclip: {fileID: 32900000, guid: 97c4079eecfa7d04781d9099043b4db8, type: 3}
   videoPlayer: {fileID: 60338896}
@@ -13485,6 +13485,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1362647755}
+  - component: {fileID: 1362647756}
+  - component: {fileID: 1362647754}
   m_Layer: 0
   m_Name: PerSkyboxController
   m_TagString: Untagged
@@ -13492,6 +13494,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1362647754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1362647753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b6c44ffd68b0304dbb580bfc141829a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseObjectList:
+  - {fileID: 108924491}
+  - {fileID: 1338528466}
+  - {fileID: 1681480149}
 --- !u!4 &1362647755
 Transform:
   m_ObjectHideFlags: 0
@@ -13509,6 +13526,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -209.644, z: 0}
+--- !u!114 &1362647756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1362647753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fea6f8eea666334aaf9869ad8f7bcda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1411394868
 GameObject:
   m_ObjectHideFlags: 0
@@ -13674,7 +13702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vrII: {fileID: 0}
-  skyboxChanger: {fileID: 0}
+  skyboxChanger: {fileID: 1362647754}
   objToEnable: {fileID: 1338528466}
   newSkyboxclip: {fileID: 32900000, guid: 1d174465458361d4ea069bf38c4bf71e, type: 3}
   videoPlayer: {fileID: 60338896}
@@ -20049,7 +20077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vrII: {fileID: 0}
-  skyboxChanger: {fileID: 0}
+  skyboxChanger: {fileID: 1362647754}
   objToEnable: {fileID: 1338528466}
   newSkyboxclip: {fileID: 32900000, guid: 1d174465458361d4ea069bf38c4bf71e, type: 3}
   videoPlayer: {fileID: 60338896}
