@@ -52,7 +52,6 @@ public class FinishApplication : MonoBehaviour, IInteractable {
     //when this object is clicked on
     public void Interact()
     {
-		Debug.Log("CLICKDD");
 		GlobalStateManager.ChangeState(GameState.Finished);
 		DisplayUserViewLine();
     }

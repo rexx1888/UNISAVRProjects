@@ -19,6 +19,11 @@ public class Analytics : ScriptableObject
 	{
 		return analyticsStorage.Count;
 	}
+
+	public void clearData()
+	{
+		analyticsStorage.Clear();
+	}
 }
 
 

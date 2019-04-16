@@ -56,7 +56,7 @@ public class RaycastTracker : MonoBehaviour {
         {			
 			//store the location and Name of where the user was looking at the scene.
 			analytics.addAnalytic(sceneTimer.value, hit.transform.name, hit.point);
-			Debug.Log(hit.transform.name);
+			//Debug.Log(hit.transform.name);
         }
     }
 }

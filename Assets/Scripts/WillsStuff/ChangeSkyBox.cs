@@ -40,7 +40,7 @@ public class ChangeSkyBox : MonoBehaviour, IInteractable {
         if (vrII != null)
         {
             //add the interact function to the double click delegate
-            vrII.OnDoubleClick += Interact;
+            vrII.OnClick += Interact;
         }
     }
 
@@ -48,11 +48,11 @@ public class ChangeSkyBox : MonoBehaviour, IInteractable {
     public void Interact()
     {
         //if we are in game
-       // if (GlobalStateManager.curState == GameState.InGame)
-       // {
+		//if (GlobalStateManager.curState == GameState.InGame)
+		//{
             //if everything isn't null
-            if (skyboxChanger != null && objToEnable != null && newSkyboxclip != null)
-            {
+            //if (skyboxChanger != null && objToEnable != null && newSkyboxclip != null)
+            //{
                 //enable the skybox dependent object, disable the others
                 skyboxChanger.EnableObject(objToEnable);
                 //change the skybox material
@@ -63,7 +63,7 @@ public class ChangeSkyBox : MonoBehaviour, IInteractable {
 
 				//was intended to fade the screen in then out, however did not work as intended. 
 				//StartCoroutine(FadeInThenOut());
-			}
+			//}
         //}
     }
 

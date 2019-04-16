@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
 public class RenderViewData : MonoBehaviour {
 
 	[SerializeField] private Analytics analytics;
-	//[SerializeField] private
 
 	//store the different rooms
 	[SerializeField] private List<Transform> raycastTrackerObjects;
 	private List<List<Analytic>> raycastAnalyticSorted;
+	//The Rooms and the list of lists are stored the same, so say theres 3 rooms,
+	//raycastAnalyticSorted[x] will store the list of analytics referencing raycastTrackerObjects[x]
+	//the same index can be used between these arrays.
+
 
 	private void Start()
 	{
@@ -37,47 +43,43 @@ public class RenderViewData : MonoBehaviour {
 					if (analytic.Room == raycastTrackerObjects[i].name)
 					{
 						raycastAnalyticSorted[i].Add(analytic);
+
+						continue;
 					}
 				}
 			}
 
 
 			//iterate through the sorted array per room
-			foreach (List<Analytic> analyticLists in raycastAnalyticSorted)
+			for (int x = 0; x < raycastAnalyticSorted.Count; x++)
 			{
-
-				if (analyticLists.Count > 0)
+				//for now we are using a line renderer to show how the user looks around the room.
+				if (raycastAnalyticSorted[x].Count > 0)
 				{
 					GameObject connectionGO;
-					connectionGO = new GameObject(transform.name + " Connections");
+					connectionGO = new GameObject(raycastAnalyticSorted[x][0].Room + " Connections");
 
 					//setup line renderer
 					LineRenderer lr = connectionGO.AddComponent<LineRenderer>();
 					lr.startWidth = 0.2f;
 					lr.endWidth = 0.2f;
 					lr.useWorldSpace = true;
-					lr.positionCount = analyticLists.Count;
+					lr.positionCount = raycastAnalyticSorted[x].Count;
 
 
 					//Iterate through the analytics list.
 					//if the data point's name is this room
-					for (int i = 0; i < analyticLists.Count; i++)
+					for (int i = 0; i < raycastAnalyticSorted[x].Count; i++)
 					{
-						//if (analytics.analyticsStorage[i].Room == RaycastO.name)
-						//{
-						lr.SetPosition(i, analyticLists[i].Point);
-						Debug.Log(analyticLists[i].Point);
-						Debug.Log(analyticLists[i].Room);
-						//}
+						lr.SetPosition(i, raycastAnalyticSorted[x][i].Point);
+						//Debug.Log(raycastAnalyticSorted[x][i].Point);
+						//Debug.Log(raycastAnalyticSorted[x][i].Room);
 					}
 
 					//set the parent for the line renderer
-					//connectionGO.transform.parent = raycastTrackerObjects.Find(object);
+					connectionGO.transform.parent = raycastTrackerObjects[x];
 				}
-			}
-
-			
-			
+			}			
 		}
 	}
 }
