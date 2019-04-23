@@ -7,14 +7,10 @@ using TMPro;
 
 public class TimePointScript : MonoBehaviour {
 
+	//the timeCode is a child (Since textmesh and Mesh Filter don't like eachother)
 	[SerializeField] private TextMeshPro textMesh;
 	[SerializeField] private Transform textMeshTransform;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	public void OnCreatePoint(Vector3 position, Transform room, float timeCode)
 	{
 		//format from seconds to minutes and seconds.
@@ -33,6 +29,5 @@ public class TimePointScript : MonoBehaviour {
 		//make the text look at the camera
 		textMeshTransform.LookAt(Camera.main.transform.position);
 		textMeshTransform.rotation = Quaternion.LookRotation(-textMeshTransform.forward);
-	}
-	
+	}	
 }
