@@ -6302,6 +6302,8 @@ MonoBehaviour:
   - {fileID: 940759004}
   - {fileID: 1733756186}
   - {fileID: 365477884}
+  pointPrefab: {fileID: 1173519562082322, guid: abeb542179dd5c8468b60c9ef2c07e34,
+    type: 2}
 --- !u!1 &420632714
 GameObject:
   m_ObjectHideFlags: 0
@@ -7730,7 +7732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vrII: {fileID: 0}
   skyboxChanger: {fileID: 1362647754}
-  objToEnable: {fileID: 1338528466}
+  objToEnable: {fileID: 1681480149}
   newSkyboxclip: {fileID: 32900000, guid: 97c4079eecfa7d04781d9099043b4db8, type: 3}
   videoPlayer: {fileID: 60338896}
   fadeDuration: 1
@@ -13225,7 +13227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vrII: {fileID: 0}
   skyboxChanger: {fileID: 1362647754}
-  objToEnable: {fileID: 1338528466}
+  objToEnable: {fileID: 1681480149}
   newSkyboxclip: {fileID: 32900000, guid: 97c4079eecfa7d04781d9099043b4db8, type: 3}
   videoPlayer: {fileID: 60338896}
   fadeDuration: 1

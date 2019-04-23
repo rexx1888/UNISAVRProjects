@@ -17,6 +17,7 @@ public class RenderViewData : MonoBehaviour {
 	//raycastAnalyticSorted[x] will store the list of analytics referencing raycastTrackerObjects[x]
 	//the same index can be used between these arrays.
 
+	[SerializeField] private GameObject pointPrefab;
 
 	private void Start()
 	{
@@ -31,6 +32,7 @@ public class RenderViewData : MonoBehaviour {
 
 	public void ShowViewPath()
 	{
+		Debug.Log("ShowViewPath Begin");
 		if (analytics.getCount() > 0)
 		{
 			//sort the analytics according to their rooms.
@@ -76,41 +78,52 @@ public class RenderViewData : MonoBehaviour {
 					//if the data point's name is this room
 					for (int i = 0; i < raycastAnalyticSorted[x].Count; i++)
 					{
+						Debug.Log("New point in " + raycastAnalyticSorted[x][i].Room);
 						lr.SetPosition(i, raycastAnalyticSorted[x][i].Point);
 						//Debug.Log(raycastAnalyticSorted[x][i].Point);
 						//Debug.Log(raycastAnalyticSorted[x][i].Room);
 
 						//Render each point along the line.
-						GameObject point = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-						//Instantiate(point, raycastAnalyticSorted[x][i].Point, Quaternion.identity);
-						point.transform.parent = raycastTrackerObjects[x];
-						point.transform.position = raycastAnalyticSorted[x][i].Point;
+						//GameObject point = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+						////Instantiate(point, raycastAnalyticSorted[x][i].Point, Quaternion.identity);
+						//point.transform.parent = raycastTrackerObjects[x];
+						//point.transform.position = raycastAnalyticSorted[x][i].Point;
 
-						//render the timecode of each point.
-						GameObject pointText = new GameObject("Text");
-						TextMeshPro textMesh = pointText.AddComponent<TextMeshPro>();
-						textMesh.color = Color.black;
-						//format the seconds into time text
-						int minutes = Mathf.FloorToInt(raycastAnalyticSorted[x][i].TimeStamp / 60F);
-						int seconds = Mathf.FloorToInt(raycastAnalyticSorted[x][i].TimeStamp - minutes * 60);
-						string niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+						////render the timecode of each point.
+						//GameObject pointText = new GameObject("Text");
 
 
-						textMesh.text = niceTime;
+						//TextMeshPro textMesh = pointText.AddComponent<TextMeshPro>();
+						//textMesh.color = Color.black;
+						////format the seconds into time text
+						//int minutes = Mathf.FloorToInt(raycastAnalyticSorted[x][i].TimeStamp / 60F);
+						//int seconds = Mathf.FloorToInt(raycastAnalyticSorted[x][i].TimeStamp - minutes * 60);
+						//string niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
 
-						//set the timeCode as a child (Since textmesh and Mesh Filter don't like eachother)
-						pointText.transform.SetParent(point.transform);
-						pointText.transform.localPosition = new Vector3(0, 5, 0);
+
+						//textMesh.text = niceTime;
+
+						////set the timeCode as a child (Since textmesh and Mesh Filter don't like eachother)
+						//pointText.transform.SetParent(point.transform);
+						//pointText.transform.localPosition = new Vector3(0, 5, 0);
+
+						GameObject pointText = Instantiate(pointPrefab);
+						TimePointScript tps = pointText.GetComponent<TimePointScript>();
+						tps.OnCreatePoint(raycastAnalyticSorted[x][i].Point, raycastTrackerObjects[x], raycastAnalyticSorted[x][i].TimeStamp);
 
 						//rotate the text to look at the camera
-						pointText.transform.LookAt(Camera.main.transform.position);
-						pointText.transform.rotation = Quaternion.LookRotation(-pointText.transform.forward);
+						//pointText.transform.LookAt(Camera.main.transform.position);
+						//pointText.transform.rotation = Quaternion.LookRotation(-pointText.transform.forward);
 					}
 
 					//set the parent for the line renderer
 					connectionGO.transform.parent = raycastTrackerObjects[x];
 				}
 			}			
+		}
+		else
+		{
+			Debug.Log("Analytics don't exist");
 		}
 	}
 }

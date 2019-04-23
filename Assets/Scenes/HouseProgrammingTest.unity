@@ -1362,6 +1362,8 @@ MonoBehaviour:
   raycastTrackerObjects:
   - {fileID: 940759004}
   - {fileID: 1733756186}
+  pointPrefab: {fileID: 1173519562082322, guid: abeb542179dd5c8468b60c9ef2c07e34,
+    type: 2}
 --- !u!1 &643371289
 GameObject:
   m_ObjectHideFlags: 0
