@@ -19,10 +19,9 @@ public class SceneController : MonoBehaviour {
     public DisplayObject userInterface;
     public GameObject player;
     public CurrentSceneState currentSceneState;
+    [HideInInspector]
     public VideoPlayer videoPlayer; //the object playing a video
-
     public bool testui = false;
-
     public float userInterfaceDistance;
     [SerializeField]protected VRInput c_Input;
 
@@ -43,7 +42,9 @@ public class SceneController : MonoBehaviour {
             cSB.controller = gameObject.GetComponent<SceneController>();
 
         }
-        
+
+        videoPlayer = GetComponent<VideoPlayer>();
+
     }
 
     private void Update()
