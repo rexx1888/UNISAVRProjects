@@ -235,7 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageToChangeColourOf: {fileID: 40822204}
   normalColour: {r: 0.2, g: 0.21568628, b: 0.40392157, a: 0.43529412}
-  hoverColour: {r: 0.09803922, g: 0.105882354, b: 0.1882353, a: 0.78431374}
+  hoverColour: {r: 0.3275187, g: 0.35154086, b: 0.6037736, a: 0.78431374}
 --- !u!1 &19055969
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageToChangeColourOf: {fileID: 1604528424}
-  normalColour: {r: 0.2, g: 0.21568628, b: 0.40392157, a: 0.43529412}
+  normalColour: {r: 0.3275187, g: 0.35154086, b: 0.6037736, a: 0.78431374}
   hoverColour: {r: 0.09803922, g: 0.105882354, b: 0.1882353, a: 0.78431374}
 --- !u!65 &62221385
 BoxCollider:
@@ -829,7 +829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageToChangeColourOf: {fileID: 1138560252}
-  normalColour: {r: 0.2, g: 0.21568628, b: 0.40392157, a: 0.43529412}
+  normalColour: {r: 0.3275187, g: 0.35154086, b: 0.6037736, a: 0.78431374}
   hoverColour: {r: 0.09803922, g: 0.105882354, b: 0.1882353, a: 0.78431374}
 --- !u!65 &147145774
 BoxCollider:
@@ -1400,7 +1400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageToChangeColourOf: {fileID: 1869721683}
-  normalColour: {r: 0.2, g: 0.21568628, b: 0.40392157, a: 0.43529412}
+  normalColour: {r: 0.3275187, g: 0.35154086, b: 0.6037736, a: 0.78431374}
   hoverColour: {r: 0.09803922, g: 0.105882354, b: 0.1882353, a: 0.78431374}
 --- !u!65 &702373474
 BoxCollider:
@@ -2657,7 +2657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageToChangeColourOf: {fileID: 86844592}
-  normalColour: {r: 0.2, g: 0.21568628, b: 0.40392157, a: 0.43529412}
+  normalColour: {r: 0.3275187, g: 0.35154086, b: 0.6037736, a: 0.78431374}
   hoverColour: {r: 0.09803922, g: 0.105882354, b: 0.1882353, a: 0.78431374}
 --- !u!65 &1740434221
 BoxCollider:
