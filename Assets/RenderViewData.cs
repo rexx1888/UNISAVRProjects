@@ -11,7 +11,7 @@ public class RenderViewData : MonoBehaviour {
 	[SerializeField] private Analytics analytics;
 
 	//store the different rooms
-	[SerializeField] private List<Transform> raycastTrackerObjects;
+	[SerializeField] public List<Transform> raycastTrackerObjects;
 	private List<List<Analytic>> raycastAnalyticSorted;
 	//The Rooms and the list of lists are stored the same, so say theres 3 rooms,
 	//raycastAnalyticSorted[x] will store the list of analytics referencing raycastTrackerObjects[x]

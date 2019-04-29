@@ -35,6 +35,7 @@ public class SceneController : MonoBehaviour {
         foreach(SceneStateChangeStuff sSCS in currentSceneState.sceneStuff)
         {
             sSCS.spawnedAnalyticTracker = Instantiate(sSCS.analyticTrackerObject, player.transform.position, player.transform.rotation).GetComponent<DisplayObject>();
+            GetComponent<RenderViewData>().raycastTrackerObjects.Add(sSCS.spawnedAnalyticTracker.gameObject.transform);
         }
         SwitchRoom();
         foreach(ChangeSkyBox cSB in gameObject.GetComponentsInChildren<ChangeSkyBox>())
@@ -43,8 +44,10 @@ public class SceneController : MonoBehaviour {
             cSB.controller = gameObject.GetComponent<SceneController>();
 
         }
-
-
+        userInterface.SetActive(true);
+        GetComponentInChildren<FinishApplication>().rvd = GetComponent<RenderViewData>();
+        GetComponentInChildren<CloseUI>().userInterface = userInterface;
+        userInterface.SetActive(false);
     }
 
     private void Update()
@@ -53,13 +56,8 @@ public class SceneController : MonoBehaviour {
         if(currentSceneState.currentScene != sceneStateCheck) //if the scene is supposed to change
         {
             SwitchRoom();
-
-
         }
-        if(testui)
-        {
-            ShowUI();
-        }
+
     }
 
     //enables the object passed in if its in the list, and disables all others in the list that are not that one

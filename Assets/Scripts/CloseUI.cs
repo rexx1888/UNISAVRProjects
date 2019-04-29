@@ -1,22 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Pixelplacement;
 
-/// <summary>
-/// 
-/// Written by William Holman in October-November 2018.
-/// 
-/// This an object which uses the VRInteractiveItem, for documentation on what I've come to learn about how it works, check the programmer readme in the github repo.
-/// 
-/// 
-/// </summary>
-
-
-public class ReloadScene : MonoBehaviour, IInteractable {
-
-    public int sceneToLoad;
-
+public class CloseUI : MonoBehaviour, IInteractable
+{
+    [HideInInspector]
+    public DisplayObject userInterface;
     //on awake
     public void Awake()
     {
@@ -31,10 +21,9 @@ public class ReloadScene : MonoBehaviour, IInteractable {
     }
 
     //when this object is double clicked on
-    public void Interact ()
+    public void Interact()
     {
-        //load the scene at int
-        SceneManager.LoadScene(sceneToLoad);
+        userInterface.SetActive(false);
     }
 
     //when this object is looked at
