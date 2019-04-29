@@ -14,6 +14,7 @@
 		Tags { "Queue" = "Transparent" }
 		// No culling or depth
 		Cull Off ZWrite Off ZTest Always
+		Blend SrcAlpha OneMinusSrcAlpha
 
 		Pass
 		{
@@ -73,14 +74,20 @@
 
 			fixed4 frag (v2f i) : SV_Target
 			{
-				fixed4 col = tex2D(_MainTex, i.uv);
+				half h = 0;
+				
+				
+				//fixed4 col = tex2D(_MainTex, i.uv);
 				// just invert the colors
 				//col.rgb = 1 - col.rgb;
 				
-				float sb = sobel(_CameraDepthTexture, i.uv);
+				//float sb = sobel(_CameraDepthTexture, i.uv);
 				//fixed4 col = fixed4(sb, sb, sb, 1);
-
-				return col * (1 - sb);
+				
+				
+				h = saturate(h);
+				half4 color = tex2D(_HeatTex, fixed2(h, 0.5));
+				return color;
 			}
 			ENDCG
 		}
