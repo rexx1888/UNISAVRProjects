@@ -11,5 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c0cf98c94d36f41953dbb209187fd7, type: 3}
   m_Name: currentState_
   m_EditorClassIdentifier: 
-  sceneStuff: []
-  currentScene: {fileID: 0}
+  sceneStuff:
+  - {fileID: 11400000, guid: f7df3e7bdd7a17843a57ba7fc69e7a02, type: 2}
+  - {fileID: 11400000, guid: 8c06e7f714ad2a549ae0711c734d684a, type: 2}
+  - {fileID: 11400000, guid: 4fdc10ab2ed5d69488fc7b18646eef1c, type: 2}
+  currentScene: {fileID: 11400000, guid: 4fdc10ab2ed5d69488fc7b18646eef1c, type: 2}

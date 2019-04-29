@@ -29,6 +29,7 @@ public class SceneController : MonoBehaviour {
 
     public void Start()
     {
+        videoPlayer = GetComponent<VideoPlayer>();
         c_Input.OnHold += ShowUI;
              
         foreach(SceneStateChangeStuff sSCS in currentSceneState.sceneStuff)
@@ -43,7 +44,6 @@ public class SceneController : MonoBehaviour {
 
         }
 
-        videoPlayer = GetComponent<VideoPlayer>();
 
     }
 

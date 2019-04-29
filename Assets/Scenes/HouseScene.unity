@@ -1103,7 +1103,7 @@ MonoBehaviour:
   baseObjectList: []
   userInterface: {fileID: 280582930}
   player: {fileID: 372923853}
-  currentSceneState: {fileID: 0}
+  currentSceneState: {fileID: 11400000, guid: 8ff734ed7a9544c42bad2b9ba5fce3c9, type: 2}
   videoPlayer: {fileID: 0}
   testui: 0
   userInterfaceDistance: 40
