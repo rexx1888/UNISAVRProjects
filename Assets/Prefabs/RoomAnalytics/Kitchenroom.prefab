@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 199492157521090876}
   - component: {fileID: 114085046263928118}
   - component: {fileID: 114966414702885042}
+  - component: {fileID: 114914461316454080}
+  - component: {fileID: 114554869171564298}
   m_Layer: 15
   m_Name: Kitchenroom
   m_TagString: Untagged
@@ -52,7 +54,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1007175324867516}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -61,7 +63,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 938060dd38216d34c9b41f4f86fc330b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,6 +101,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55938fb1577dd4ad3af7e994048c86f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114554869171564298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1007175324867516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2051751ce144356429d7e2c4fbb71ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114914461316454080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1007175324867516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff95a40761138254aa83f8329cc3ce92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoomHeatmapMaterial: {fileID: 2100000, guid: 83ce5bec56df1834da3e5847d9accc96, type: 2}
+  mapPointProperty: {x: 2, y: 1, z: 0, w: 0}
+  positions: []
 --- !u!114 &114966414702885042
 MonoBehaviour:
   m_ObjectHideFlags: 1
