@@ -11,7 +11,7 @@ public class InvertMesh : MonoBehaviour {
         MeshFilter mf = GetComponent<MeshFilter>();
         Mesh mesh = mf.mesh;
         InsideOut(ref mesh);
-        AssetDatabase.CreateAsset(mesh, "Assets/InvertedMesh" + gameObject.name + ".asset");
+        AssetDatabase.CreateAsset(mesh, "Assets/Art/InvertedMeshes/InvertedMesh" + gameObject.name + ".asset");
         AssetDatabase.SaveAssets();
     }
 
