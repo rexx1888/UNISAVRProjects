@@ -45,6 +45,7 @@ public class ChangeSkyBox : MonoBehaviour, IInteractable {
     {
         //controller.EnableObject(objToEnable.GetComponent<DisplayObject>());
         controller.currentSceneState.currentScene = sceneSpecificStuff;
+		Debug.Log(sceneSpecificStuff.name);
     }
 
     //when this object is first looked at

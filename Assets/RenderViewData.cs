@@ -60,8 +60,8 @@ public class RenderViewData : MonoBehaviour {
 				}
 			}
 
-			//CreateLineRender);
-			CreateHeatMap();
+			CreateLineRender();
+			//CreateHeatMap();
 			
 		}
 		else

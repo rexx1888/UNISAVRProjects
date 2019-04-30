@@ -32,7 +32,7 @@ public class SceneController : MonoBehaviour {
     {
         videoPlayer = GetComponent<VideoPlayer>();
         c_Input.OnHold += ShowUI;
-        sceneStateCheck = currentSceneState.currentScene;     
+         
         foreach(SceneStateChangeStuff sSCS in currentSceneState.sceneStuff)
         {
             sSCS.spawnedAnalyticTracker = Instantiate(sSCS.analyticTrackerObject, player.transform.position, player.transform.rotation).GetComponent<DisplayObject>();
@@ -99,5 +99,7 @@ public class SceneController : MonoBehaviour {
 
             }
         }
-    }
+
+		sceneStateCheck = currentSceneState.currentScene;
+	}
 }

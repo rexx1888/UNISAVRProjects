@@ -87,7 +87,9 @@ namespace VRStandardAssets.Utils
                 f_ButtonHeldTime += Time.deltaTime;
                 if(f_ButtonHeldTime >= f_ButtonMaxHoldTime)
                 {
-                    if(OnHold != null)
+					f_ButtonHeldTime = 0;
+
+					if (OnHold != null)
                     {
                         OnHold();
                     }
@@ -102,7 +104,9 @@ namespace VRStandardAssets.Utils
 
                 // Detect the direction between the mouse positions when Fire1 is pressed and released.
                 swipe = DetectSwipe ();
-            }
+
+				f_ButtonHeldTime = 0;
+			}
 
             // If there was no swipe this frame from the mouse, check for a keyboard swipe.
             if (swipe == SwipeDirection.NONE)
