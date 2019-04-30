@@ -11,7 +11,7 @@ public class RenderViewData : MonoBehaviour {
 	[SerializeField] private Analytics analytics;
 
 	//store the different rooms
-	[SerializeField] private List<GameObject> raycastTrackerObjects;
+	[SerializeField] public List<GameObject> raycastTrackerObjects;
 
 
 

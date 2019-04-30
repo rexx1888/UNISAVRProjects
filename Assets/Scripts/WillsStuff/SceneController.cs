@@ -36,7 +36,7 @@ public class SceneController : MonoBehaviour {
         foreach(SceneStateChangeStuff sSCS in currentSceneState.sceneStuff)
         {
             sSCS.spawnedAnalyticTracker = Instantiate(sSCS.analyticTrackerObject, player.transform.position, player.transform.rotation).GetComponent<DisplayObject>();
-            GetComponent<RenderViewData>().raycastTrackerObjects.Add(sSCS.spawnedAnalyticTracker.gameObject.transform);
+            GetComponent<RenderViewData>().raycastTrackerObjects.Add(sSCS.spawnedAnalyticTracker.gameObject);
         }
         userInterface.SetActive(true);
         foreach (ChangeSkyBox cSB in gameObject.GetComponentsInChildren<ChangeSkyBox>())
