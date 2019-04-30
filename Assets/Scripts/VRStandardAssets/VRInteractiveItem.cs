@@ -10,6 +10,7 @@ namespace VRStandardAssets.Utils
     public class VRInteractiveItem : MonoBehaviour
     {
         public event Action OnOver;             // Called when the gaze moves over this object
+        public event Action OnTouch;            // Called once when an object is first hovered over
         public event Action OnOut;              // Called when the gaze leaves this object
         public event Action OnClick;            // Called when click input is detected whilst the gaze is over this object.
         public event Action OnDoubleClick;      // Called when double click input is detected whilst the gaze is over this object.
@@ -36,6 +37,13 @@ namespace VRStandardAssets.Utils
                 OnOver();
         }
 
+        public void Touched()
+        {
+            if(OnTouch != null)
+            {
+                OnTouch();
+            }
+        }
 
         public void Out()
         {

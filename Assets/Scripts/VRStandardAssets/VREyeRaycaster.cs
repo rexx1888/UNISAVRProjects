@@ -25,6 +25,8 @@ namespace VRStandardAssets.Utils
         private VRInteractiveItem m_CurrentInteractible;                //The current interactive item
         private VRInteractiveItem m_LastInteractible;                   //The last interactive item
 
+        protected float raycastTime = 0;
+        protected bool rayJustOver = true;
 
         // Utility for other classes to get the current interactive item
         public VRInteractiveItem CurrentInteractible
@@ -77,7 +79,18 @@ namespace VRStandardAssets.Utils
 
                 // If we hit an interactive item and it's not the same as the last interactive item, then call Over
                 if (interactible && interactible != m_LastInteractible)
-                    interactible.Over(); 
+                {
+                    raycastTime += Time.deltaTime;
+                    if (raycastTime > 0.0001f && !rayJustOver)
+                    {
+                        interactible.Over();
+                    }
+                    else
+                    {
+                        rayJustOver = false;
+                        interactible.Touched();
+                    }
+                }
 
                 // Deactive the last interactive item 
                 if (interactible != m_LastInteractible)
@@ -97,6 +110,8 @@ namespace VRStandardAssets.Utils
                 // Nothing was hit, deactive the last interactive item.
                 DeactiveLastInteractible();
                 m_CurrentInteractible = null;
+                raycastTime = 0;
+                rayJustOver = true;
 
                 // Position the reticle at default distance.
                 if (m_Reticle)

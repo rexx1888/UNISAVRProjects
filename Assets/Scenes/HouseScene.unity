@@ -114,48 +114,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &7571991
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4395611760549432, guid: b990e61b18bb9454691ff9d58aeb744d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4395611760549432, guid: b990e61b18bb9454691ff9d58aeb744d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4395611760549432, guid: b990e61b18bb9454691ff9d58aeb744d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4395611760549432, guid: b990e61b18bb9454691ff9d58aeb744d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4395611760549432, guid: b990e61b18bb9454691ff9d58aeb744d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4395611760549432, guid: b990e61b18bb9454691ff9d58aeb744d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4395611760549432, guid: b990e61b18bb9454691ff9d58aeb744d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4395611760549432, guid: b990e61b18bb9454691ff9d58aeb744d, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b990e61b18bb9454691ff9d58aeb744d, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &14428076
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +333,8 @@ GameObject:
   - component: {fileID: 118085355}
   - component: {fileID: 118085352}
   - component: {fileID: 118085353}
+  - component: {fileID: 118085359}
+  - component: {fileID: 118085360}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -507,6 +467,32 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 118085350}
   m_CullTransparentMesh: 0
+--- !u!114 &118085359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 118085350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f04bd670230cd2439f230710bafa41c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchClip: {fileID: 8300000, guid: 32d2175474d86aa4ab1379e7e35d1ba6, type: 3}
+  playMe: 0
+--- !u!114 &118085360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 118085350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d164aceb9686f44aedcbe406df757c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchClip: {fileID: 8300000, guid: 068e4d230b731c941a28752a1c97d6fb, type: 3}
+  playMe: 0
 --- !u!1 &161425782
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +623,8 @@ GameObject:
   - component: {fileID: 219700203}
   - component: {fileID: 219700198}
   - component: {fileID: 219700199}
+  - component: {fileID: 219700205}
+  - component: {fileID: 219700206}
   m_Layer: 5
   m_Name: BedroomButton
   m_TagString: Untagged
@@ -771,6 +759,32 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 219700196}
   m_CullTransparentMesh: 0
+--- !u!114 &219700205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 219700196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f04bd670230cd2439f230710bafa41c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchClip: {fileID: 8300000, guid: f5a78950eda5fce409e0379055bc6b3a, type: 3}
+  playMe: 0
+--- !u!114 &219700206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 219700196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d164aceb9686f44aedcbe406df757c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchClip: {fileID: 8300000, guid: 068e4d230b731c941a28752a1c97d6fb, type: 3}
+  playMe: 0
 --- !u!225 &219700207
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1794,6 +1808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 655344785}
+  SceneTimer: {fileID: 11400000, guid: 292245e10b9596647899d532273cd1a6, type: 2}
   timerInterval: 0.1
   sceneTimer: {fileID: 11400000, guid: 292245e10b9596647899d532273cd1a6, type: 2}
   analytics: {fileID: 11400000, guid: 3838ac923fb26ca4ea1883dce2f70625, type: 2}
@@ -1813,6 +1828,8 @@ GameObject:
   - component: {fileID: 1330709179}
   - component: {fileID: 1330709176}
   - component: {fileID: 1330709175}
+  - component: {fileID: 1330709181}
+  - component: {fileID: 1330709182}
   m_Layer: 5
   m_Name: KitchenButton
   m_TagString: Untagged
@@ -1919,6 +1936,32 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1330709173}
   m_CullTransparentMesh: 0
+--- !u!114 &1330709181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330709173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f04bd670230cd2439f230710bafa41c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchClip: {fileID: 8300000, guid: f5a78950eda5fce409e0379055bc6b3a, type: 3}
+  playMe: 0
+--- !u!114 &1330709182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330709173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d164aceb9686f44aedcbe406df757c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchClip: {fileID: 8300000, guid: 068e4d230b731c941a28752a1c97d6fb, type: 3}
+  playMe: 0
 --- !u!225 &1330709183
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2100,6 +2143,8 @@ GameObject:
   - component: {fileID: 1498494214}
   - component: {fileID: 1498494213}
   - component: {fileID: 1498494211}
+  - component: {fileID: 1498494218}
+  - component: {fileID: 1498494219}
   m_Layer: 5
   m_Name: FinishButton
   m_TagString: Untagged
@@ -2183,7 +2228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8468667b2cbfe49bba3f58f142a928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneTimer: {fileID: 11400000, guid: 292245e10b9596647899d532273cd1a6, type: 2}
   analytics: {fileID: 11400000, guid: 3838ac923fb26ca4ea1883dce2f70625, type: 2}
   rvd: {fileID: 0}
 --- !u!65 &1498494214
@@ -2235,6 +2279,32 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1498494209}
   m_CullTransparentMesh: 0
+--- !u!114 &1498494218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1498494209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f04bd670230cd2439f230710bafa41c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchClip: {fileID: 8300000, guid: 32d2175474d86aa4ab1379e7e35d1ba6, type: 3}
+  playMe: 0
+--- !u!114 &1498494219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1498494209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d164aceb9686f44aedcbe406df757c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchClip: {fileID: 8300000, guid: 068e4d230b731c941a28752a1c97d6fb, type: 3}
+  playMe: 0
 --- !u!1 &1652828656
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,6 +2320,8 @@ GameObject:
   - component: {fileID: 1652828660}
   - component: {fileID: 1652828659}
   - component: {fileID: 1652828658}
+  - component: {fileID: 1652828664}
+  - component: {fileID: 1652828665}
   m_Layer: 5
   m_Name: CloseUIButton
   m_TagString: Untagged
@@ -2354,6 +2426,32 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1652828656}
   m_CullTransparentMesh: 0
+--- !u!114 &1652828664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1652828656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f04bd670230cd2439f230710bafa41c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchClip: {fileID: 8300000, guid: cf2a10aca9f88a04dba19992497db40c, type: 3}
+  playMe: 0
+--- !u!114 &1652828665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1652828656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d164aceb9686f44aedcbe406df757c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchClip: {fileID: 8300000, guid: 068e4d230b731c941a28752a1c97d6fb, type: 3}
+  playMe: 0
 --- !u!1 &1746927320
 GameObject:
   m_ObjectHideFlags: 0
@@ -2910,6 +3008,8 @@ GameObject:
   - component: {fileID: 2100056529}
   - component: {fileID: 2100056526}
   - component: {fileID: 2100056525}
+  - component: {fileID: 2100056531}
+  - component: {fileID: 2100056532}
   m_Layer: 5
   m_Name: loungeButton
   m_TagString: Untagged
@@ -3016,6 +3116,32 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2100056523}
   m_CullTransparentMesh: 0
+--- !u!114 &2100056531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2100056523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f04bd670230cd2439f230710bafa41c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchClip: {fileID: 8300000, guid: f5a78950eda5fce409e0379055bc6b3a, type: 3}
+  playMe: 0
+--- !u!114 &2100056532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2100056523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d164aceb9686f44aedcbe406df757c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchClip: {fileID: 8300000, guid: 068e4d230b731c941a28752a1c97d6fb, type: 3}
+  playMe: 0
 --- !u!225 &2100056533
 CanvasGroup:
   m_ObjectHideFlags: 0
