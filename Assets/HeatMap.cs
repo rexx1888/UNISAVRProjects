@@ -10,7 +10,7 @@ public class HeatMap : MonoBehaviour {
 
 	//[SerializeField] private Material[] materials;
 
-	[SerializeField] Vector4 mapPointProperty;
+	[SerializeField] Vector2 mapPointProperty;
 	[SerializeField] public Vector4[] properties;
 	[SerializeField] public Vector4[] positions;
 	private int totalCalculatedPoints;
@@ -26,80 +26,58 @@ public class HeatMap : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		if (roomAnalytics.Count > 0)
-		{
-			//for (int i = 0; i < roomAnalytics.Count; i++)
-			//{
-			//	properties[i] = mapPointProperty;
-			//}
+		//if (roomAnalytics.Count > 0)
+		//{
+		//	//for (int i = 0; i < roomAnalytics.Count; i++)
+		//	//{
+		//	//	properties[i] = mapPointProperty;
+		//	//}
 
-			RoomHeatmapMaterial.SetInt("_Points_Length", totalCalculatedPoints);
-			RoomHeatmapMaterial.SetVectorArray("_Points", positions);
-			RoomHeatmapMaterial.SetVectorArray("_Properties", properties);
-			Debug.Log(properties.Length);
+		//	RoomHeatmapMaterial.SetInt("_Points_Length", totalCalculatedPoints);
+		//	RoomHeatmapMaterial.SetVectorArray("_Points", positions);
+		//	RoomHeatmapMaterial.SetVectorArray("_Properties", properties);
+		//	Debug.Log(properties.Length);
 
-		}
+		//}
 	}
 
 	public void setData(List<Analytic> givenAnalytics)
 	{
-		roomAnalytics = givenAnalytics;
-		//List<Analytic> CalculatedPoints = new List<Analytic>();
+		//roomAnalytics = givenAnalytics;
+		////List<Analytic> CalculatedPoints = new List<Analytic>();
 
-		properties = new Vector4[roomAnalytics.Count];
-		Debug.Log(properties.Length);
-		positions = new Vector4[roomAnalytics.Count];
+		//properties = new Vector4[roomAnalytics.Count];
+		//Debug.Log(properties.Length);
+		//positions = new Vector4[roomAnalytics.Count];
 
-		
+		//Mesh localMesh = GetComponent<Mesh>();
+		//Vector3[] LocalVerticies = localMesh.vertices;
+		//List<Color> meshColours = new List<Color>();
 
-		//iterate through room specific data array
-		for (int i = 0; i < roomAnalytics.Count; i++)
-		{
-			bool AddToList = true;
-			//iterate through sorted data
+		////iterate through room specific data array
+		//for (int i = 0; i < LocalVerticies.Length; i++)
+		//{
+		//	float h = 0;
 
-			int TestAmount = 0;
-			int testMax = 0;
-			int testMin = 0;
+		//	for (int x = 0; x < roomAnalytics.Count; x++)
+		//	{
+		//		float di = Vector3.Distance(LocalVerticies[i], roomAnalytics[x].Point);
 
-			if (i > 10 && roomAnalytics.Count > i + 10)
-			{
-				testMin = i - 10;
-				testMax = i + 10;
-				//TestAmount = i - 10;
-			}
-			else if (i < 10 && roomAnalytics.Count > i + 10)
-			{
-				testMin = 0;
-				testMax = i + 10;
-			}
-			else
-			{
-				testMax = roomAnalytics.Count;
-			}
+		//		float ri = mapPointProperty.x;
+		//		float hi = 1 - Mathf.Clamp(di / ri, 0, 1);
+
+		//		h += hi * mapPointProperty.y;
+		//	}
+
+		//	h = Mathf.Clamp(h, 0, 1);
+
+		//	meshColours.Add()
+		//}
 
 
-			for (int x = testMin; x < testMax; x++)
-			{
-				
-				//if sorted data contains a point that is close to a pre existing point
-				if (Vector3.Distance(positions[x], roomAnalytics[i].Point) < 1 && roomAnalytics[x].TimeStamp != roomAnalytics[i].TimeStamp)
-				{
-					properties[x] += mapPointProperty * 0.1f;
-					AddToList = false;
-				}
-			}
-			Debug.Log(properties.Length);
-			if (AddToList == true)
-			{
-				properties[totalCalculatedPoints] = mapPointProperty;
-				positions[totalCalculatedPoints] = new Vector4(roomAnalytics[i].Point.x, roomAnalytics[i].Point.y, roomAnalytics[i].Point.z);
-				totalCalculatedPoints++;
-			}
-		}
+		//localMesh.SetColors()
+		////Material[] mats = GetComponent<Renderer>().materials;
 
-		//Material[] mats = GetComponent<Renderer>().materials;
-
-		GetComponent<Renderer>().material = RoomHeatmapMaterial;
+		//GetComponent<Renderer>().material = RoomHeatmapMaterial;
 	}
 }

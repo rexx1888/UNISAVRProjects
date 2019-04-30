@@ -1794,6 +1794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 655344785}
+  SceneTimer: {fileID: 11400000, guid: 292245e10b9596647899d532273cd1a6, type: 2}
   timerInterval: 0.1
   sceneTimer: {fileID: 11400000, guid: 292245e10b9596647899d532273cd1a6, type: 2}
   analytics: {fileID: 11400000, guid: 3838ac923fb26ca4ea1883dce2f70625, type: 2}
@@ -2183,7 +2184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8468667b2cbfe49bba3f58f142a928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneTimer: {fileID: 11400000, guid: 292245e10b9596647899d532273cd1a6, type: 2}
   analytics: {fileID: 11400000, guid: 3838ac923fb26ca4ea1883dce2f70625, type: 2}
   rvd: {fileID: 0}
 --- !u!65 &1498494214
