@@ -211,14 +211,4 @@ QualitySettings:
     resolutionScalingFixedDPIFactor: 1
     excludedTargetPlatforms:
     - Standalone
-  m_PerPlatformDefaultQuality:
-    Android: 2
-    BlackBerry: 2
-    Samsung TV: 3
-    Standalone: 5
-    Tizen: 2
-    WP8: 2
-    Web: 5
-    WebGL: 2
-    Windows Store Apps: 3
-    iPhone: 2
+  m_PerPlatformDefaultQuality: {}
