@@ -50,27 +50,14 @@ Shader "Hidden/Heatmap" {
 				half h = 0;
 				for (int i = 0; i < _Points_Length; i++)
 				{
-					if (i < arrayLength)
-					{
-						// Calculates the contribution of each point
-						half di = distance(output.worldPos, _Points[i].xyz);
 
-						half ri = _Properties[i].x;
-						half hi = 1 - saturate(di / ri); //Blend tolerance between points.
+					// Calculates the contribution of each point
+					half di = distance(output.worldPos, _Points[i].xyz);
 
-						h += hi * _Properties[i].y;
-					}
-					//else if (i > arrayLength && i < arrayLength * 2)
-					//{
-					//	// Calculates the contribution of each point
-					//	half di = distance(output.worldPos, _Points2[i].xyz);
+					half ri = _Properties[i].x;
+					half hi = 1 - saturate(di / ri); //Blend tolerance between points.
 
-					//	half ri = _Properties2[i].x;
-					//	half hi = 1 - saturate(di / ri); //Blend tolerance between points.
-
-					//	h += hi * _Properties2[i].y;
-					//}
-					
+					h += hi * _Properties[i].y;					
 				}
 
 				// Converts (0-1) according to the heat texture

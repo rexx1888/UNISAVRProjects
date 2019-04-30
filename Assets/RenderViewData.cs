@@ -36,6 +36,7 @@ public class RenderViewData : MonoBehaviour {
 			raycastAnalyticSorted.Add(new List<Analytic>());
 		}
 
+
 	}
 
 	public void ShowViewPath()
@@ -60,8 +61,8 @@ public class RenderViewData : MonoBehaviour {
 				}
 			}
 
-			CreateLineRender();
-			//CreateHeatMap();
+			//CreateLineRender();
+			CreateHeatMap();
 			
 		}
 		else

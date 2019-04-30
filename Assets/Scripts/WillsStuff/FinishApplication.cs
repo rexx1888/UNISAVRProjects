@@ -21,7 +21,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(ScriptableObjectFloat))]
 public class FinishApplication : MonoBehaviour, IInteractable {
 
-    public ScriptableObjectFloat SceneTimer;
+
 
     //public WallOfCubesController wallController; //the controller for the walls surrounding the camera object. 
     private VRInteractiveItem vrII; //the VRInteractiveItem attached to this.
@@ -45,8 +45,7 @@ public class FinishApplication : MonoBehaviour, IInteractable {
             vrII.OnClick += Interact;
         }
 
-        //reset the timer to 0 when the scene begins.
-        SceneTimer.value = 0;
+        
     }
 
     //when this object is clicked on
@@ -72,8 +71,7 @@ public class FinishApplication : MonoBehaviour, IInteractable {
     
     void Update()
     {
-        //update the timer for every second.
-        SceneTimer.value += Time.deltaTime;
+        
     }
 
 	void DisplayUserViewLine()

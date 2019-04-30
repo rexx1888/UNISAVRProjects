@@ -5,6 +5,7 @@ using UnityEngine;
 public class RaycastTracker : MonoBehaviour {
 
     public Camera mainCamera;
+	public ScriptableObjectFloat SceneTimer;
 	//public ParticleSystem particleSystem;
 	//private ParticleSystem.EmitParams emitParams;
 
@@ -20,6 +21,9 @@ public class RaycastTracker : MonoBehaviour {
 	void Start () {
 		//emitParams = new ParticleSystem.EmitParams;
 		localTimer = 0;
+		//reset the timer to 0 when the scene begins.
+		SceneTimer.value = 0;
+
 		layermask = LayerMask.GetMask("ViewTracker");
 	}
 	
@@ -40,8 +44,17 @@ public class RaycastTracker : MonoBehaviour {
 			}
 		}
 	}
-	
-    private void storePoint()
+
+	private void Update()
+	{
+		if (GlobalStateManager.curState == GameState.InGame)
+		{
+			//update the timer for every second.
+			SceneTimer.value += Time.deltaTime;
+		}
+	}
+
+	private void storePoint()
     {
 		//raycast from the camera looking fowards
         RaycastHit hit;
