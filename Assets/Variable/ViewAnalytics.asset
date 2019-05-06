@@ -11,4 +11,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30eb3e0be34576f40a6ff1ead5192088, type: 3}
   m_Name: ViewAnalytics
   m_EditorClassIdentifier: 
-  value: 0
+  analyticStorage:
+    visionTrackingData:
+    - TimeStamp: 0.04
+      Room: LoungeroomOLD(Clone)
+      Point: {x: 0, y: 0, z: 50}
+    - TimeStamp: 0.23842283
+      Room: LoungeroomOLD(Clone)
+      Point: {x: 0, y: 0, z: 50}
+    - TimeStamp: 0.35940093
+      Room: LoungeroomOLD(Clone)
+      Point: {x: 0, y: 0, z: 50}
+    - TimeStamp: 0.47735655
+      Room: LoungeroomOLD(Clone)
+      Point: {x: 0, y: 0, z: 50}
+    - TimeStamp: 0.59620625
+      Room: LoungeroomOLD(Clone)
+      Point: {x: 0, y: 0, z: 50}

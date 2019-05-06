@@ -6,22 +6,35 @@ using System.IO;
 
 public class SessionDataEditor : EditorWindow {
 
-    protected string sessionDataProjectFilePath = "/StreamingAssets/data.json";
+    protected string sessionDataProjectFilePath = "/data0.json";
     protected string sessionDataProjectPath = "/StreamingAssets";
 
 
     public AnalyticStorage sessionData;
-
+    protected bool updateGui = false;
 
     [MenuItem("Window/Session Data editor")]
     static void init()
     {
         SessionDataEditor window = (SessionDataEditor)EditorWindow.GetWindow(typeof(SessionDataEditor));
         window.Show();
+        
+    }
+
+    private void OnEnable()
+    {
+        sessionData = null;
+    }
+
+    private void OnSelectionChange()
+    {
+        //Repaint();
     }
 
     private void OnGUI()
     {
+        //LoadSessionData(0);
+
         if(sessionData != null)
         {
             SerializedObject seralizedObject = new SerializedObject(this);
@@ -37,32 +50,63 @@ public class SessionDataEditor : EditorWindow {
             }
             
         }
+          
+        DirectoryInfo d = new DirectoryInfo(Application.dataPath + sessionDataProjectPath);
+        FileInfo[] fis = d.GetFiles();
 
-        if(GUILayout.Button("Load Data"))
+        if (fis.Length > 0)
         {
-            LoadSessionData(0);
+            foreach (FileInfo f in fis)
+            {
+                if (!f.Extension.Contains("meta"))
+                {
+                    if (GUILayout.Button(f.Name))
+                    {
+                        Debug.Log(f.Name);
+
+                        LoadSessionData(f.Name);
+                    }
+                }
+            }
+        }
+
+        if (GUILayout.Button("Create New Data"))
+        {
+            sessionData = new AnalyticStorage();
+            sessionDataProjectFilePath = "";
         }
     }
 
     protected void LoadSessionData(int i)
     {
-        string goalData = "/StreamingAssets/data" + i + ".json";
+        string goalData = sessionDataProjectFilePath;
         string filePath = Application.dataPath + goalData;
-
         if(File.Exists(filePath))
         {
             string dataAsJson = File.ReadAllText(filePath);
             sessionData = JsonUtility.FromJson<AnalyticStorage>(dataAsJson);
+            sessionDataProjectFilePath = goalData;
         }
-        else
+       
+    }
+
+    protected void LoadSessionData(string i)
+    {
+        string goalData = sessionDataProjectPath + "/" + i;
+        string filePath = Application.dataPath + goalData;
+
+        if (File.Exists(filePath))
         {
-            sessionData = new AnalyticStorage();
+            string dataAsJson = File.ReadAllText(filePath);
+            sessionData = JsonUtility.FromJson<AnalyticStorage>(dataAsJson);
+            sessionDataProjectFilePath = goalData;
         }
+      
     }
 
     protected void SaveSessionData()
     {
-        SetFileName();
+        if(sessionDataProjectFilePath == "")SetFileName();
         string dataAsJson = JsonUtility.ToJson(sessionData);
         string filePath = Application.dataPath + sessionDataProjectFilePath;
 
@@ -83,7 +127,7 @@ public class SessionDataEditor : EditorWindow {
             }
         }
 
-        sessionDataProjectFilePath = "/StreamingAssets/data" + i + ".json";
+        sessionDataProjectFilePath = sessionDataProjectPath + "/data" + i + ".json";
     }
 
 
