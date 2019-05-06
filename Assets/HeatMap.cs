@@ -13,14 +13,17 @@ public class HeatMap : MonoBehaviour {
 	[SerializeField] Vector2 mapPointProperty;
 	[SerializeField] public Vector4[] properties;
 	[SerializeField] public Vector4[] positions;
-	private int totalCalculatedPoints;
+	public Texture2D heatMapGradient;
+
+
+	//private int totalCalculatedPoints;
 
 
 	// Use this for initialization
 	void Start ()
 	{
 		roomAnalytics = new List<Analytic>();
-		totalCalculatedPoints = 0;
+		//totalCalculatedPoints = 0;
 	}
 	
 	// Update is called once per frame
@@ -43,41 +46,65 @@ public class HeatMap : MonoBehaviour {
 
 	public void setData(List<Analytic> givenAnalytics)
 	{
-		//roomAnalytics = givenAnalytics;
-		////List<Analytic> CalculatedPoints = new List<Analytic>();
+		roomAnalytics = givenAnalytics;
+		//List<Analytic> CalculatedPoints = new List<Analytic>();
 
-		//properties = new Vector4[roomAnalytics.Count];
+		properties = new Vector4[roomAnalytics.Count];
 		//Debug.Log(properties.Length);
-		//positions = new Vector4[roomAnalytics.Count];
+		positions = new Vector4[roomAnalytics.Count];
 
+
+		MeshFilter localMesh = GetComponent<MeshFilter>();
 		//Mesh localMesh = GetComponent<Mesh>();
-		//Vector3[] LocalVerticies = localMesh.vertices;
-		//List<Color> meshColours = new List<Color>();
 
-		////iterate through room specific data array
-		//for (int i = 0; i < LocalVerticies.Length; i++)
-		//{
-		//	float h = 0;
-
-		//	for (int x = 0; x < roomAnalytics.Count; x++)
-		//	{
-		//		float di = Vector3.Distance(LocalVerticies[i], roomAnalytics[x].Point);
-
-		//		float ri = mapPointProperty.x;
-		//		float hi = 1 - Mathf.Clamp(di / ri, 0, 1);
-
-		//		h += hi * mapPointProperty.y;
-		//	}
-
-		//	h = Mathf.Clamp(h, 0, 1);
-
-		//	meshColours.Add()
-		//}
+		Vector3[] LocalVerticies = localMesh.mesh.vertices;
+		LocalVerticies = LocalToWorldSpaceVert(LocalVerticies, transform);
 
 
-		//localMesh.SetColors()
-		////Material[] mats = GetComponent<Renderer>().materials;
+		Color[] meshColours = new Color[LocalVerticies.Length];
+
+
+
+		//iterate through room specific data array
+		for (int i = 0; i < LocalVerticies.Length; i++)
+		{
+			float h = 0;
+
+			for (int x = 0; x < roomAnalytics.Count; x++)
+			{
+				float di = Vector3.Distance(LocalVerticies[i], roomAnalytics[x].Point);
+
+				float ri = mapPointProperty.x;
+				float hi = 1 - Mathf.Clamp(di / ri, 0, 1);
+
+				h += hi * mapPointProperty.y;
+
+				if (hi > 0)
+					Debug.Log(":O");
+			}
+
+			h = Mathf.Clamp(h, 0, 1);
+
+			//meshColours.Add(heatMapGradient.GetPixelBilinear(h, 0.5f));
+			meshColours[i] = heatMapGradient.GetPixelBilinear(h, 0.5f);
+		}
+
+
+		//localMesh.mesh.SetColors(meshColours);
+		localMesh.mesh.colors = meshColours;
+		//Material[] mats = GetComponent<Renderer>().materials;
 
 		//GetComponent<Renderer>().material = RoomHeatmapMaterial;
+
+	}
+
+	public Vector3[] LocalToWorldSpaceVert(Vector3[] LocalVerticies, Transform owner)
+	{
+		for (int i = 0; i < LocalVerticies.Length; i++)
+		{
+			LocalVerticies[i] = owner.localToWorldMatrix.MultiplyPoint3x4(LocalVerticies[i]);
+		}
+
+		return LocalVerticies;
 	}
 }
