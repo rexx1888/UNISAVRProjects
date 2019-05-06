@@ -46,7 +46,7 @@ public class RenderViewData : MonoBehaviour {
 		{
 			//sort the analytics according to their rooms.
 			//iterate through the analytics list
-			foreach (Analytic analytic in analytics.analyticsStorage)
+			foreach (Analytic analytic in analytics.analyticStorage.visionTrackingData)
 			{
 				//iterate through the rooms
 				for (int i = 0; i < raycastTrackerObjects.Count; i++)

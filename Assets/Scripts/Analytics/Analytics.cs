@@ -1,32 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
-[CreateAssetMenu(fileName = "Analytic Storage", menuName = "Analytics/Storage")]
+[CreateAssetMenu(fileName = "Analytic Storage", menuName = "Analytics/Storage"), System.Serializable]
 public class Analytics : ScriptableObject
 {
-	[SerializeField] public float value;
+    [SerializeField] public AnalyticStorage analyticStorage = new AnalyticStorage();
 
-	
-	public void addAnalytic(float timeStamp, string room, Vector3 point)
+    protected string sessionDataFileName = "data.json";
+
+    public void addAnalytic(float timeStamp, string room, Vector3 point)
 	{
-		analyticsStorage.Add(new Analytic(timeStamp, room, point));
+		analyticStorage.visionTrackingData.Add(new Analytic(timeStamp, room, point));
 	}
 
-	public List<Analytic> analyticsStorage = new List<Analytic>();
 
 	public int getCount()
 	{
-		return analyticsStorage.Count;
+		return analyticStorage.visionTrackingData.Count;
 	}
 
 	public void clearData()
 	{
-		analyticsStorage.Clear();
+		analyticStorage.visionTrackingData.Clear();
 	}
+
+    public void ExportData()
+    {
+        //export the data
+    }
+
+    public void LoadData()
+    {
+        //import data
+
+        string filePath = Path.Combine(Application.streamingAssetsPath, sessionDataFileName);
+
+        if(File.Exists(filePath))
+        {
+            string dataAsJson = File.ReadAllText(filePath);
+        }
+    }
 }
 
+[System.Serializable]
+public class AnalyticStorage
+{
+    [SerializeField] public List<Analytic> visionTrackingData = new List<Analytic>();
+       
+}
 
+[System.Serializable]
 public struct Analytic
 {
 	public float TimeStamp;
