@@ -40,7 +40,7 @@ public class Analytics : ScriptableObject
         if(File.Exists(filePath))
         {
             string dataAsJson = File.ReadAllText(filePath);
-            AnalyticStorage newData = JsonUtility.FromJson<AnalyticStorage>;
+            //AnalyticStorage newData = JsonUtility.FromJson<AnalyticStorage>;
         }
     }
 }
