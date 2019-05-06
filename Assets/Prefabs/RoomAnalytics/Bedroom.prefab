@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114894368534598776}
   - component: {fileID: 114623895368649520}
   - component: {fileID: 114838113219245992}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bedroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 938060dd38216d34c9b41f4f86fc330b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,10 +112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomHeatmapMaterial: {fileID: 2100000, guid: 1fe4d271e57c4c346bc395c9d609c84f, type: 2}
-  mapPointProperty: {x: 2, y: 1}
+  mapPointProperty: {x: 2, y: 0.5}
   properties: []
   positions: []
-  heatMapGradient: {fileID: 2800000, guid: a3e402277acc74b4e8d90d17b9b95192, type: 3}
+  heatMapGradient: {fileID: 2800000, guid: 8127dbc4270c26b40aaafbb2bd223ba7, type: 3}
 --- !u!114 &114894368534598776
 MonoBehaviour:
   m_ObjectHideFlags: 1
