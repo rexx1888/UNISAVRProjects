@@ -13,7 +13,7 @@ public class AudioOnClick : MonoBehaviour {
 
     public bool playMe = false;
 
-    void Start () {
+    void Awake () {
         if (GetComponent<AudioSource>() == null)
         {
             a_Effect = gameObject.AddComponent<AudioSource>();

@@ -94,7 +94,7 @@ public class HeatMap : MonoBehaviour {
 		localMesh.mesh.colors = meshColours;
 		//Material[] mats = GetComponent<Renderer>().materials;
 
-		//GetComponent<Renderer>().material = RoomHeatmapMaterial;
+		GetComponent<Renderer>().material = RoomHeatmapMaterial;
 
 	}
 

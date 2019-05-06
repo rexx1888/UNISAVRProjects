@@ -29,6 +29,8 @@ public class RenderViewData : MonoBehaviour {
 
 	private void Start()
 	{
+		analytics.clearData();
+
 		//initialise the sorted array for assigning to later.
 		raycastAnalyticSorted = new List<List<Analytic>>();
 		for (int i = 0; i < raycastTrackerObjects.Count; i++ )
