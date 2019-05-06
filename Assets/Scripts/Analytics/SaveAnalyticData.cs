@@ -5,35 +5,18 @@ using VRStandardAssets.Utils;
 using UnityEngine.UI;
 using Pixelplacement;
 
-/// <summary>
-/// 
-/// Written by William Holman in October-November 2018.
-/// 
-/// This an object which uses the VRInteractiveItem, for documentation on what I've come to learn about how it works, check the programmer readme in the github repo.
-/// 
-/// this is used for displaying the 'analytics' objects. Each of these objects check how long they have been looked at, and the amount they were looked at. it was an experiment, i'm personally not happy with it.
-/// 
-/// Modified by Camryn Schriever 2019
-/// 
-/// 
-/// </summary>
+[RequireComponent(typeof(VRInteractiveItem))]
+public class SaveAnalyticData : MonoBehaviour, IInteractable
+{
 
-[RequireComponent(typeof(VRInteractiveItem)),RequireComponent(typeof(ScriptableObjectFloat))]
-public class FinishApplication : MonoBehaviour, IInteractable {
-
+    public Analytics analytics; //link to the analytics scriptable object
 
 
     //public WallOfCubesController wallController; //the controller for the walls surrounding the camera object. 
     private VRInteractiveItem vrII; //the VRInteractiveItem attached to this.
-	public Analytics analytics;
 
-	//Neaten this later.
-	public RenderViewData rvd;
-
-    public DisplayObject analyticButtons;
-
-	//on start
-	public void Start()
+    //on start
+    public void Start()
     {
         //get the vrInteractiveItem component attached to this
         vrII = this.GetComponent<VRInteractiveItem>();
@@ -45,21 +28,19 @@ public class FinishApplication : MonoBehaviour, IInteractable {
             vrII.OnOut += OnHoverExit;
             vrII.OnClick += Interact;
         }
+
         gameObject.AddComponent<DisplayObject>().SetActive(true);
-        
 
     }
 
     //when this object is clicked on
     public void Interact()
     {
-		GlobalStateManager.ChangeState(GameState.Finished);
-		DisplayUserViewLine();
-        analyticButtons.SetActive(true);
+        analytics.ExportData();
         GetComponent<DisplayObject>().SetActive(false);
     }
 
-    
+
     //when this object is looked at
     public void OnHoverEnter()
     {
@@ -72,14 +53,4 @@ public class FinishApplication : MonoBehaviour, IInteractable {
 
     }
 
-    
-    void Update()
-    {
-        
-    }
-
-	void DisplayUserViewLine()
-	{
-		rvd.ShowViewPath();
-	}
 }

@@ -8,6 +8,9 @@ public class Analytics : ScriptableObject
 {
     [SerializeField] public AnalyticStorage analyticStorage = new AnalyticStorage();
 
+    protected string sessionDataProjectFilePath = "/StreamingAssets";
+
+
     protected string sessionDataFileName = "data.json";
 
     public void addAnalytic(float timeStamp, string room, Vector3 point)
@@ -26,21 +29,68 @@ public class Analytics : ScriptableObject
 		analyticStorage.visionTrackingData.Clear();
 	}
 
+    public void SetFileName()
+    {
+        int i = 0;
+
+        DirectoryInfo d = new DirectoryInfo(Application.dataPath + sessionDataProjectFilePath);
+        FileInfo[] fis = d.GetFiles();
+        foreach(FileInfo f in fis)
+        {
+            if(f.Extension.Contains("json"))
+            {
+                i++;
+            }
+        }
+
+        sessionDataFileName = "data" + i + ".json";
+    }
+
     public void ExportData()
     {
         //export the data
+        SetFileName();
+        string dataAsJson = JsonUtility.ToJson(analyticStorage);
+        string filePath = Application.dataPath + sessionDataProjectFilePath;
+
+        File.WriteAllText(filePath, dataAsJson);
+
     }
 
-    public void LoadData()
+    public void LoadData(int i)
     {
         //import data
-
-        string filePath = Path.Combine(Application.streamingAssetsPath, sessionDataFileName);
+        string goalFilePathName = "data" + i + ".json";
+        string filePath = Path.Combine(Application.streamingAssetsPath, goalFilePathName);
 
         if(File.Exists(filePath))
         {
             string dataAsJson = File.ReadAllText(filePath);
-            //AnalyticStorage newData = JsonUtility.FromJson<AnalyticStorage>;
+            AnalyticStorage newData = JsonUtility.FromJson<AnalyticStorage>(dataAsJson);
+
+            analyticStorage = newData;
+        }else
+        {
+            Debug.LogError("session data unloadable");
+        }
+    }
+
+    public void LoadData(string i)
+    {
+        //import data
+        string goalFilePathName = i;
+        string filePath = Path.Combine(Application.streamingAssetsPath, goalFilePathName);
+
+        if (File.Exists(filePath))
+        {
+            string dataAsJson = File.ReadAllText(filePath);
+            AnalyticStorage newData = JsonUtility.FromJson<AnalyticStorage>(dataAsJson);
+
+            analyticStorage = newData;
+        }
+        else
+        {
+            Debug.LogError("session data unloadable");
         }
     }
 }
