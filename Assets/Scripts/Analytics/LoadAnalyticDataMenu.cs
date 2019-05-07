@@ -78,7 +78,8 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
                 newButton.transform.SetParent(contentPanel);
 				newButton.transform.localPosition = Vector3.zero;
                 LoadAnalyticData buttonScript = newButton.GetComponent<LoadAnalyticData>();
-                buttonScript.index = Path.Combine(Application.streamingAssetsPath, f.Name);
+                buttonScript.index = f.Name;
+                buttonScript.SetName(f.Name);
                 buttonScript.menu = loadmenu;
                 buttonScript.controlButtons = buttons;
                 buttonScript.analytics = analytics;

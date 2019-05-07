@@ -8,10 +8,7 @@ public class Analytics : ScriptableObject
 {
     [SerializeField] public AnalyticStorage analyticStorage = new AnalyticStorage();
 
-    protected string sessionDataProjectFilePath = "/StreamingAssets";
-
-
-    protected string sessionDataFileName = "data.json";
+    protected string sessionDataFileName = "";
 
     public void addAnalytic(float timeStamp, string room, Vector3 point)
 	{
@@ -27,13 +24,14 @@ public class Analytics : ScriptableObject
 	public void clearData()
 	{
 		analyticStorage.visionTrackingData.Clear();
+        sessionDataFileName = "";
 	}
 
     public void SetFileName()
     {
         int i = 0;
 
-        DirectoryInfo d = new DirectoryInfo(Application.dataPath + sessionDataProjectFilePath);
+        DirectoryInfo d = new DirectoryInfo(Application.dataPath + sessionDataFileName);
         FileInfo[] fis = d.GetFiles();
         foreach(FileInfo f in fis)
         {
@@ -49,9 +47,10 @@ public class Analytics : ScriptableObject
     public void ExportData()
     {
         //export the data
-        SetFileName();
+        if (sessionDataFileName == "") SetFileName();
+        analyticStorage.sessionDataFileName = sessionDataFileName;
         string dataAsJson = JsonUtility.ToJson(analyticStorage);
-        string filePath = Application.dataPath + sessionDataProjectFilePath;
+        string filePath = Application.dataPath + sessionDataFileName;
 
         File.WriteAllText(filePath, dataAsJson);
 
@@ -61,7 +60,7 @@ public class Analytics : ScriptableObject
     {
         //import data
         string goalFilePathName = "data" + i + ".json";
-        string filePath = Path.Combine(Application.streamingAssetsPath, goalFilePathName);
+        string filePath = Application.streamingAssetsPath +"/"+ goalFilePathName;
 
         if(File.Exists(filePath))
         {
@@ -69,17 +68,20 @@ public class Analytics : ScriptableObject
             AnalyticStorage newData = JsonUtility.FromJson<AnalyticStorage>(dataAsJson);
 
             analyticStorage = newData;
-        }else
+            sessionDataFileName = analyticStorage.sessionDataFileName;
+
+        }
+        else
         {
             Debug.LogError("session data unloadable");
         }
+
     }
 
     public void LoadData(string i)
     {
         //import data
-        string goalFilePathName = i;
-        string filePath = Path.Combine(Application.streamingAssetsPath, goalFilePathName);
+        string filePath = Application.streamingAssetsPath +"/" + i; //contains the streaming path and the actual file name
 
         if (File.Exists(filePath))
         {
@@ -87,6 +89,8 @@ public class Analytics : ScriptableObject
             AnalyticStorage newData = JsonUtility.FromJson<AnalyticStorage>(dataAsJson);
 
             analyticStorage = newData;
+            sessionDataFileName = analyticStorage.sessionDataFileName;
+
         }
         else
         {
@@ -98,8 +102,8 @@ public class Analytics : ScriptableObject
 [System.Serializable]
 public class AnalyticStorage
 {
+    [SerializeField] public string sessionDataFileName = "";
     [SerializeField] public List<Analytic> visionTrackingData = new List<Analytic>();
-       
 }
 
 [System.Serializable]

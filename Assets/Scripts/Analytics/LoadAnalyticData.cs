@@ -4,6 +4,7 @@ using UnityEngine;
 using VRStandardAssets.Utils;
 using UnityEngine.UI;
 using Pixelplacement;
+using TMPro;
 
 [RequireComponent(typeof(VRInteractiveItem))]
 public class LoadAnalyticData : MonoBehaviour, IInteractable
@@ -14,6 +15,8 @@ public class LoadAnalyticData : MonoBehaviour, IInteractable
     public DisplayObject menu;
     //public WallOfCubesController wallController; //the controller for the walls surrounding the camera object. 
     private VRInteractiveItem vrII; //the VRInteractiveItem attached to this.
+    public SimpleObjectPool pool;
+
 
     //on start
     public void Start()
@@ -28,15 +31,21 @@ public class LoadAnalyticData : MonoBehaviour, IInteractable
             vrII.OnOut += OnHoverExit;
             vrII.OnClick += Interact;
         }
+        pool = GameObject.FindGameObjectWithTag("ObjectPoolButtons").GetComponent<SimpleObjectPool>();
+    }
 
+    public void SetName(string name)
+    {
+        GetComponentInChildren<TextMeshProUGUI>().text = name;
     }
 
     //when this object is clicked on
     public void Interact()
     {
         analytics.LoadData(index);
-        menu.SetActive(false);
+        pool.ReturnAllObjects();
         controlButtons.SetActive(true);
+        menu.SetActive(false);
     }
 
 

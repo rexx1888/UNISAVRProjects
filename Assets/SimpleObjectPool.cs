@@ -8,7 +8,7 @@ public class SimpleObjectPool : MonoBehaviour
     public GameObject prefab;
     // collection of currently inactive instances of the prefab
     private Stack<GameObject> inactiveInstances = new Stack<GameObject>();
-
+    protected List<GameObject> objects = new List<GameObject>();
     
     
     // Returns an instance of the prefab
@@ -36,8 +36,18 @@ public class SimpleObjectPool : MonoBehaviour
         spawnedGameObject.transform.SetParent(null);
         spawnedGameObject.SetActive(true);
 
+        objects.Add(spawnedGameObject);
+
         // return a reference to the instance
         return spawnedGameObject;
+    }
+
+    public void ReturnAllObjects()
+    {
+        foreach(GameObject go in objects)
+        {
+            ReturnObject(go);
+        }
     }
 
     // Return an instance of the prefab to the pool
