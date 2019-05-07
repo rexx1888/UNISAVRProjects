@@ -13,23 +13,27 @@ public class RenderViewData : MonoBehaviour {
 	//store the different rooms
 	[SerializeField] public List<GameObject> raycastTrackerObjects;
 
-
-
-	private List<List<Analytic>> raycastAnalyticSorted;
 	//The Rooms and the list of lists are stored the same, so say theres 3 rooms,
 	//raycastAnalyticSorted[x] will store the list of analytics referencing raycastTrackerObjects[x]
 	//the same index can be used between these arrays.
-
-	[SerializeField] private GameObject pointPrefab;
+	private List<List<Analytic>> raycastAnalyticSorted;
 
 	//This needs to be a reference, since if you attempt to create the material programmatically,
 	//Unity fails to pass it into the android build.
 	[SerializeField] private Material matTest;
+	[SerializeField] private Material transparentMaterial;
+	[SerializeField] private Material heatMapMaterial;
+
+	[SerializeField] private GameObject pointPrefab;
+	private SceneController sceneController;
+	private List<GameObject> lineRenders;
 
 
 	private void Start()
 	{
 		analytics.clearData();
+
+		sceneController = GetComponent<SceneController>();
 
 		//initialise the sorted array for assigning to later.
 		raycastAnalyticSorted = new List<List<Analytic>>();
@@ -104,13 +108,12 @@ public class RenderViewData : MonoBehaviour {
 					//Instantiate the point.
 					GameObject pointText = Instantiate(pointPrefab);
 					TimePointScript tps = pointText.GetComponent<TimePointScript>();
-					tps.OnCreatePoint(raycastAnalyticSorted[x][i].Point, raycastTrackerObjects[x].transform, raycastAnalyticSorted[x][i].TimeStamp);
+					tps.OnCreatePoint(raycastAnalyticSorted[x][i].Point, connectionGO.transform, raycastAnalyticSorted[x][i].TimeStamp);
 				}
 
-
 				//set the parent for the line renderer
-				GameObject LineParent = Instantiate(new GameObject("View Line"), raycastTrackerObjects[x].transform);
-				connectionGO.transform.parent = LineParent.transform;
+				connectionGO.transform.parent = raycastTrackerObjects[x].transform;
+				lineRenders.Add(connectionGO);
 			}
 		}
 	}
@@ -127,16 +130,33 @@ public class RenderViewData : MonoBehaviour {
 
 	public void ShowHeatMap()
 	{
-
+		foreach (GameObject raycastObject in raycastTrackerObjects)
+		{
+			raycastObject.GetComponent<Renderer>().material = heatMapMaterial;
+		}
 	}
 
 	public void ShowLineRender()
 	{
-
+		foreach (GameObject pointList in lineRenders)
+		{
+			//if (pointList.transform.parent.name == sceneController.currentSceneState.currentScene.analyticTrackerObject.name)
+				pointList.SetActive(true);
+			//else
+			//	pointList.SetActive(false);
+		}
 	}
 
 	public void DisableAllMetrics()
 	{
+		foreach (GameObject pointList in lineRenders)
+		{
+			pointList.SetActive(false);
+		}
 
+		foreach (GameObject raycastObject in raycastTrackerObjects)
+		{
+			raycastObject.GetComponent<Renderer>().material = transparentMaterial;
+		}
 	}
 }
