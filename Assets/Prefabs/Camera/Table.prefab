@@ -1150,7 +1150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece1d0f0ee56c764580f0a486ee23759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageToChangeColourOf: {fileID: 114749139652605410}
   UseCanvases: 0
   canvasToFadeInto: {fileID: 0}
   stateToChangeTo: 2
@@ -1158,8 +1157,6 @@ MonoBehaviour:
   difficultyToChangeTo: 1
   loadScene: 1
   sceneToLoad: 2
-  normalColour: {r: 0.40392157, g: 0.023529412, b: 0.023529412, a: 0.43529412}
-  hoverColour: {r: 0.21568628, g: 0.015686275, b: 0.015686275, a: 0.6901961}
 --- !u!114 &114223136165263078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1302,8 +1299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13608d1e3017dd47991c6c2923735c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knifeToggle: {fileID: 114426182640140584}
-  fidgetToggle: {fileID: 114354812009035664}
+  listOfToggles: []
   secondsToFadeContinueObject: 0.5
   continueButton: {fileID: 225929432930943332}
 --- !u!114 &114354812009035664
@@ -1641,6 +1637,8 @@ MonoBehaviour:
   objectHighlight: {fileID: 1675221654799352}
   canvasToFadeIn: {fileID: 1673181380584812, guid: 2b7f02b2c117c4e4baa83cab965a9676,
     type: 2}
+  itemIsTracked: 1
+  nameOfInspectableObject: Blank
 --- !u!114 &114749139652605410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1717,6 +1715,8 @@ MonoBehaviour:
   objectHighlight: {fileID: 1139629804901272}
   canvasToFadeIn: {fileID: 1673181380584812, guid: 2b7f02b2c117c4e4baa83cab965a9676,
     type: 2}
+  itemIsTracked: 1
+  nameOfInspectableObject: Blank
 --- !u!114 &114848006394091664
 MonoBehaviour:
   m_ObjectHideFlags: 1
