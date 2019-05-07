@@ -16,6 +16,8 @@ using VRStandardAssets.Utils;
 public class SceneController : MonoBehaviour {
 
     public DisplayObject userInterface;
+    public DisplayObject analyticButtons;
+    public DisplayObject loadMenu;
     public GameObject player;
     public CurrentSceneState currentSceneState;
     [HideInInspector]
@@ -39,6 +41,8 @@ public class SceneController : MonoBehaviour {
             GetComponent<RenderViewData>().raycastTrackerObjects.Add(sSCS.spawnedAnalyticTracker.gameObject);
         }
         userInterface.SetActive(true);
+        analyticButtons.SetActive(true);
+        loadMenu.SetActive(true);
         foreach (ChangeSkyBox cSB in gameObject.GetComponentsInChildren<ChangeSkyBox>())
         {
             buttons.Add(cSB);
@@ -51,7 +55,16 @@ public class SceneController : MonoBehaviour {
 
         GetComponentInChildren<FinishApplication>().rvd = GetComponent<RenderViewData>();
         GetComponentInChildren<CloseUI>().userInterface = userInterface;
+        GetComponentInChildren<CloseLoadMenu>().userInterface = userInterface;
+        GetComponentInChildren<CloseLoadMenu>().menu = loadMenu;
+
+        GetComponentInChildren<HeatMapTrackingSwitch>().analyticController = GetComponent<RenderViewData>();
+        GetComponentInChildren<HeadTrackingSwitch>().analyticController = GetComponent<RenderViewData>();
+
+
         userInterface.SetActive(false);
+        analyticButtons.SetActive(false);
+        loadMenu.SetActive(false);
     }
 
     private void Update()
