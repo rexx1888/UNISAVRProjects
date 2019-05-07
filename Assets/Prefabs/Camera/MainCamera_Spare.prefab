@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 114211811311525804}
   - component: {fileID: 114794723473744978}
   m_Layer: 0
-  m_Name: MainCamera
+  m_Name: MainCamera_Spare
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -397,6 +397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DoubleClickTime: 0.3
   m_SwipeWidth: 0.5
+  f_ButtonMaxHoldTime: 0.1
 --- !u!114 &114441039586527114
 MonoBehaviour:
   m_ObjectHideFlags: 1
