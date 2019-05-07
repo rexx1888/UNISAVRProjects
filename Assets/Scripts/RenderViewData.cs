@@ -37,8 +37,6 @@ public class RenderViewData : MonoBehaviour {
 		{
 			raycastAnalyticSorted.Add(new List<Analytic>());
 		}
-
-
 	}
 
 	public void ShowViewPath()
@@ -63,8 +61,8 @@ public class RenderViewData : MonoBehaviour {
 				}
 			}
 
-			//CreateLineRender();
-			CreateHeatMap();
+			CreateLineRender();
+			//CreateHeatMap();
 			
 		}
 		else
@@ -109,8 +107,10 @@ public class RenderViewData : MonoBehaviour {
 					tps.OnCreatePoint(raycastAnalyticSorted[x][i].Point, raycastTrackerObjects[x].transform, raycastAnalyticSorted[x][i].TimeStamp);
 				}
 
+
 				//set the parent for the line renderer
-				connectionGO.transform.parent = raycastTrackerObjects[x].transform;
+				GameObject LineParent = Instantiate(new GameObject("View Line"), raycastTrackerObjects[x].transform);
+				connectionGO.transform.parent = LineParent.transform;
 			}
 		}
 	}
@@ -123,5 +123,20 @@ public class RenderViewData : MonoBehaviour {
 			HeatMap heatMap = raycastTrackerObjects[i].GetComponent<HeatMap>();
 			heatMap.setData(raycastAnalyticSorted[i]);
 		}
+	}
+
+	public void ShowHeatMap()
+	{
+
+	}
+
+	public void ShowLineRender()
+	{
+
+	}
+
+	public void DisableAllMetrics()
+	{
+
 	}
 }
