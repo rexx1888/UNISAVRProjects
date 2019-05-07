@@ -31,7 +31,7 @@ public class LoadAnalyticData : MonoBehaviour, IInteractable
             vrII.OnOut += OnHoverExit;
             vrII.OnClick += Interact;
         }
-        pool = GameObject.FindGameObjectWithTag("ObjectPoolButtons").GetComponent<SimpleObjectPool>();
+
     }
 
     public void SetName(string name)

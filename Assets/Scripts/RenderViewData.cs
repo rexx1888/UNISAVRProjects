@@ -34,6 +34,7 @@ public class RenderViewData : MonoBehaviour {
 		analytics.clearData();
 
 		sceneController = GetComponent<SceneController>();
+		lineRenders = new List<GameObject>();
 
 		//initialise the sorted array for assigning to later.
 		raycastAnalyticSorted = new List<List<Analytic>>();
@@ -66,7 +67,7 @@ public class RenderViewData : MonoBehaviour {
 			}
 
 			CreateLineRender();
-			//CreateHeatMap();
+			CreateHeatMap();
 			
 		}
 		else

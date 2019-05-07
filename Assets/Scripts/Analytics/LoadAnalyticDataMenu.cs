@@ -74,15 +74,20 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
         {
             foreach (FileInfo f in fis)
             {
-                GameObject newButton = pool.GetObject();
-                newButton.transform.SetParent(contentPanel);
-				newButton.transform.localPosition = Vector3.zero;
-                LoadAnalyticData buttonScript = newButton.GetComponent<LoadAnalyticData>();
-                buttonScript.index = f.Name;
-                buttonScript.SetName(f.Name);
-                buttonScript.menu = loadmenu;
-                buttonScript.controlButtons = buttons;
-                buttonScript.analytics = analytics;
+
+				if (!f.Extension.Contains("meta"))
+				{
+					GameObject newButton = pool.GetObject();
+					newButton.transform.SetParent(contentPanel);
+					newButton.transform.localPosition = Vector3.zero;
+					LoadAnalyticData buttonScript = newButton.GetComponent<LoadAnalyticData>();
+					buttonScript.index = f.Name;
+					buttonScript.SetName(f.Name);
+					buttonScript.menu = loadmenu;
+					buttonScript.controlButtons = buttons;
+					buttonScript.analytics = analytics;
+					buttonScript.pool = pool;
+				}
             }
         }
     }

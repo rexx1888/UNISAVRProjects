@@ -31,7 +31,7 @@ public class Analytics : ScriptableObject
     {
         int i = 0;
 
-        DirectoryInfo d = new DirectoryInfo(Application.dataPath + sessionDataFileName);
+        DirectoryInfo d = new DirectoryInfo(Application.streamingAssetsPath);
         FileInfo[] fis = d.GetFiles();
         foreach(FileInfo f in fis)
         {
@@ -50,7 +50,7 @@ public class Analytics : ScriptableObject
         if (sessionDataFileName == "") SetFileName();
         analyticStorage.sessionDataFileName = sessionDataFileName;
         string dataAsJson = JsonUtility.ToJson(analyticStorage);
-        string filePath = Application.dataPath + sessionDataFileName;
+        string filePath = Application.streamingAssetsPath + "/" + sessionDataFileName;
 
         File.WriteAllText(filePath, dataAsJson);
 
@@ -82,7 +82,7 @@ public class Analytics : ScriptableObject
     {
         //import data
         string filePath = Application.streamingAssetsPath +"/" + i; //contains the streaming path and the actual file name
-
+		Debug.Log(filePath);
         if (File.Exists(filePath))
         {
             string dataAsJson = File.ReadAllText(filePath);
