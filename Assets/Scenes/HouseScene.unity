@@ -1289,7 +1289,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   analytics: {fileID: 11400000, guid: 3838ac923fb26ca4ea1883dce2f70625, type: 2}
-  raycastTrackerObjects: []
+  raycastTrackerObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   pointPrefab: {fileID: 1173519562082322, guid: abeb542179dd5c8468b60c9ef2c07e34,
     type: 2}
   matTest: {fileID: 2100000, guid: 89e66ca790b37f14f8f47a6f102b8b70, type: 2}
