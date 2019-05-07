@@ -80,6 +80,6 @@ public class FinishApplication : MonoBehaviour, IInteractable {
 
 	void DisplayUserViewLine()
 	{
-		rvd.ShowViewPath();
+		rvd.refreshAnalytics();
 	}
 }

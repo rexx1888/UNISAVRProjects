@@ -13,13 +13,13 @@ public class TimePointScript : MonoBehaviour {
 
 	public void OnCreatePoint(Vector3 position, Transform room, float timeCode)
 	{
+
 		//format from seconds to minutes and seconds.
 		int minutes = Mathf.FloorToInt(timeCode / 60F);
 		int seconds = Mathf.FloorToInt(timeCode - minutes * 60);
 		string formattedTime = string.Format("{0:0}:{1:00}", minutes, seconds);
 
 		//set text mesh info
-		textMesh.color = Color.black;
 		textMesh.text = formattedTime;
 
 		//set parent (for activating and deactivating between rooms) and position.

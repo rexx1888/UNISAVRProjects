@@ -13,6 +13,7 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
     public DisplayObject loadmenu;
     public DisplayObject buttons;
     public Analytics analytics; //link to the analytics scriptable object
+	public RenderViewData rvd;
 
     public SimpleObjectPool pool;
     public Transform contentPanel;
@@ -72,7 +73,10 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
         FileInfo[] fis = d.GetFiles();
         if (fis.Length > 0)
         {
-            foreach (FileInfo f in fis)
+			pool.ReturnAllObjects();
+			
+
+			foreach (FileInfo f in fis)
             {
 
 				if (!f.Extension.Contains("meta"))
@@ -80,6 +84,7 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
 					GameObject newButton = pool.GetObject();
 					newButton.transform.SetParent(contentPanel);
 					newButton.transform.localPosition = Vector3.zero;
+					newButton.transform.rotation = newButton.transform.parent.rotation;
 					LoadAnalyticData buttonScript = newButton.GetComponent<LoadAnalyticData>();
 					buttonScript.index = f.Name;
 					buttonScript.SetName(f.Name);
@@ -87,6 +92,7 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
 					buttonScript.controlButtons = buttons;
 					buttonScript.analytics = analytics;
 					buttonScript.pool = pool;
+					buttonScript.rvd = rvd;
 				}
             }
         }

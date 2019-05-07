@@ -57,7 +57,7 @@ public class SceneController : MonoBehaviour {
         GetComponentInChildren<CloseUI>().userInterface = userInterface;
         GetComponentInChildren<CloseLoadMenu>().userInterface = userInterface;
         GetComponentInChildren<CloseLoadMenu>().menu = loadMenu;
-
+		GetComponentInChildren<LoadAnalyticDataMenu>().rvd = GetComponent<RenderViewData>();
         GetComponentInChildren<HeatMapTrackingSwitch>().analyticController = GetComponent<RenderViewData>();
         GetComponentInChildren<HeadTrackingSwitch>().analyticController = GetComponent<RenderViewData>();
 

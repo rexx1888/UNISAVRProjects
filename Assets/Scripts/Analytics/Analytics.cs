@@ -21,7 +21,7 @@ public class Analytics : ScriptableObject
 		return analyticStorage.visionTrackingData.Count;
 	}
 
-	public void clearData()
+	public void ClearData()
 	{
 		analyticStorage.visionTrackingData.Clear();
         sessionDataFileName = "";

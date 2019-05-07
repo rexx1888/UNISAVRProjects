@@ -44,11 +44,16 @@ public class SimpleObjectPool : MonoBehaviour
 
     public void ReturnAllObjects()
     {
-        foreach(GameObject go in objects)
-        {
-            ReturnObject(go);
-        }
-    }
+		if (objects.Count > 0)
+		{
+			foreach (GameObject go in objects)
+			{
+				ReturnObject(go);
+			}
+			objects.Clear();
+
+		}
+	}
 
     // Return an instance of the prefab to the pool
     public void ReturnObject(GameObject toReturn)
