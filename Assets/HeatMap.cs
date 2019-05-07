@@ -79,8 +79,8 @@ public class HeatMap : MonoBehaviour {
 
 				h += hi * mapPointProperty.y;
 
-				if (hi > 0)
-					Debug.Log(":O");
+				//if (hi > 0)
+				//	Debug.Log(":O");
 			}
 
 			h = Mathf.Clamp(h, 0, 1);

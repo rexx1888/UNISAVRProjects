@@ -18,9 +18,10 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
     public Transform contentPanel;
     public List<FileInfo> loadIndices = new List<FileInfo>();
     protected string sessionDataProjectFilePath = "/StreamingAssets";
+	public float userInterfaceDistance;
 
-    //public WallOfCubesController wallController; //the controller for the walls surrounding the camera object. 
-    private VRInteractiveItem vrII; //the VRInteractiveItem attached to this.
+	//public WallOfCubesController wallController; //the controller for the walls surrounding the camera object. 
+	private VRInteractiveItem vrII; //the VRInteractiveItem attached to this.
 
     //on start
     public void Start()
@@ -44,9 +45,13 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
     public void Interact()
     {
         buttons.SetActive(false);
-        PopulateLoadButtons();
-        loadmenu.SetActive(true);
-    }
+		loadmenu.transform.position = Camera.main.transform.forward * userInterfaceDistance; //not finished yet
+		loadmenu.SetActive(true);
+
+		PopulateLoadButtons();
+
+		//direction * distance + sighting position
+	}
 
 
     //when this object is looked at
@@ -71,6 +76,7 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
             {
                 GameObject newButton = pool.GetObject();
                 newButton.transform.SetParent(contentPanel);
+				newButton.transform.localPosition = Vector3.zero;
                 LoadAnalyticData buttonScript = newButton.GetComponent<LoadAnalyticData>();
                 buttonScript.index = Path.Combine(Application.streamingAssetsPath, f.Name);
                 buttonScript.menu = loadmenu;
