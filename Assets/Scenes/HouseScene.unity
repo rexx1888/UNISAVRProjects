@@ -1748,9 +1748,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   analytics: {fileID: 11400000, guid: 3838ac923fb26ca4ea1883dce2f70625, type: 2}
   raycastTrackerObjects: []
+  matTest: {fileID: 2100000, guid: 89e66ca790b37f14f8f47a6f102b8b70, type: 2}
+  transparentMaterial: {fileID: 2100000, guid: 938060dd38216d34c9b41f4f86fc330b, type: 2}
+  heatMapMaterial: {fileID: 2100000, guid: 1fe4d271e57c4c346bc395c9d609c84f, type: 2}
   pointPrefab: {fileID: 1173519562082322, guid: abeb542179dd5c8468b60c9ef2c07e34,
     type: 2}
-  matTest: {fileID: 2100000, guid: 89e66ca790b37f14f8f47a6f102b8b70, type: 2}
 --- !u!1 &364832983
 GameObject:
   m_ObjectHideFlags: 0
