@@ -30,7 +30,7 @@ public class SceneController : MonoBehaviour {
 
     protected SceneStateChangeStuff sceneStateCheck;
 
-    public void Start()
+    public void Awake()
     {
         videoPlayer = GetComponent<VideoPlayer>();
         c_Input.OnHold += ShowUI;

@@ -4,21 +4,40 @@ using UnityEngine;
 using TMPro;
 
 
+public struct SortedAnalyticStorage
+{
+	public GameObject raycastTrackerObject;
+	public List<List<Analytic>> roomVisits;
 
+	public SortedAnalyticStorage(GameObject room)
+	{
+		raycastTrackerObject = room;
+		roomVisits = new List<List<Analytic>>();
+	}
+
+	//public void Initialise()
+	//{
+	//	roomVisits = new List<List<Analytic>>();
+	//}
+
+	public void Clear()
+	{
+		foreach (List<Analytic> la in roomVisits)
+		{
+			la.Clear();
+		}
+	}
+}
 
 public class RenderViewData : MonoBehaviour {
 
 	[SerializeField] private Analytics analytics;
 
-	//store the different rooms
+	//references to the rooms.
 	[SerializeField] public List<GameObject> raycastTrackerObjects;
 
-	//The Rooms and the list of lists are stored the same, so say theres 3 rooms,
-	//raycastAnalyticSorted[x] will store the list of analytics referencing raycastTrackerObjects[x]
-	//the same index can be used between these arrays.
-	//private List<List<Analytic>> raycastAnalyticSorted;
-	private List<List<List<Analytic>>> raycastAnalyticSorted;
-
+	public List<SortedAnalyticStorage> roomsInfo;
+	
 	public float timeCodeInterval = 1;
 
 	//This needs to be a reference, since if you attempt to create the material programmatically,
@@ -30,7 +49,8 @@ public class RenderViewData : MonoBehaviour {
 	[SerializeField] private GameObject pointPrefab;
 	//private SceneController sceneController;
 	private List<GameObject> lineRenders;
-
+	
+	
 	private void Start()
 	{
 		//analytics.clearData();
@@ -39,43 +59,30 @@ public class RenderViewData : MonoBehaviour {
 		lineRenders = new List<GameObject>();
 
 		//initialise the sorted array for assigning to later.
-		raycastAnalyticSorted = new List<List<List<Analytic>>>();
+		//raycastAnalyticSorted = new List<List<List<Analytic>>>();
+		roomsInfo = new List<SortedAnalyticStorage>();
 
-		//if (raycastAnalyticSorted != null)
-		//{
-		//	foreach (List<List<Analytic>> lla in raycastAnalyticSorted)
-		//	{
-		//		if (lla.Count > 0)
-		//		{
-		//			foreach (List<Analytic> la in lla)
-		//			{
-		//				la.Clear();
-		//			}
-		//		}
-		//		lla.Clear();
-		//	}
-		//	raycastAnalyticSorted.Clear();
-		//}
+		for (int i = 0; i < raycastTrackerObjects.Count; i++)
+		{
+			roomsInfo.Add(new SortedAnalyticStorage(raycastTrackerObjects[i]));
+		}
+
 		analytics.ClearData();
 	}
 
 	public void refreshAnalytics()
 	{
-		if (raycastAnalyticSorted != null)
+		//clear the rooms.
+		if (roomsInfo.Count > 0)
 		{
-			foreach (List<List<Analytic>> lla in raycastAnalyticSorted)
+			//for each room.
+			foreach (SortedAnalyticStorage SAS in roomsInfo)
 			{
-				if (lla.Count > 0)
-				{
-					foreach (List<Analytic> la in lla)
-					{
-						la.Clear();
-					}
-				}
-				lla.Clear();
+				SAS.Clear();
 			}
-			raycastAnalyticSorted.Clear();
 		}
+
+
 
 		if (lineRenders.Count > 0)
 		{
@@ -93,42 +100,42 @@ public class RenderViewData : MonoBehaviour {
 			}
 		}
 
-		//initialise the sorted array for assigning to later.
-		for (int i = 0; i < raycastTrackerObjects.Count; i++)
-		{
-			raycastAnalyticSorted.Add(new List<List<Analytic>>());
-		}
 
 		Debug.Log("ShowViewPath Begin");
 		if (analytics.getCount() > 0)
 		{
-			string previousRoomName = "";
+			//string previousRoomName = "";
+			//GameObject previousRoom = null;
+			//SortedAnalyticStorage prevSAS = roomsInfo[0];
+			int prevIterator = 0;
+
 			List<Analytic> visitList = new List<Analytic>();
 
 			//sort the analytics according to their rooms.
-			//iterate through the analytics list
+			//for each analytic
 			foreach (Analytic analytic in analytics.analyticStorage.visionTrackingData)
 			{
+
 				
-				//iterate through the rooms
-				for (int i = 0; i < raycastTrackerObjects.Count; i++)
+				//for each room.
+				//foreach (SortedAnalyticStorage sas in roomsInfo)
+				for (int i = 0; i < roomsInfo.Count; i++)
 				{
-					//if the analytic matches the room, store it in the sorted list
-					if (analytic.Room == raycastTrackerObjects[i].name)
+					if (analytic.Room == roomsInfo[i].raycastTrackerObject.name)
 					{
-						if (previousRoomName != analytic.Room) //if the user went to a new room
+						//if its a different visit
+						if (roomsInfo[prevIterator].raycastTrackerObject.name != analytic.Room)
 						{
-							List<Analytic> newL = new List<Analytic>();
-							foreach(Analytic a in visitList)
-							{
-								newL.Add(a);
-							}
-							raycastAnalyticSorted[i].Add(visitList);
-							visitList.Clear();
-							//visitList = new List<Analytic>();
+							//add everything to the last room
+							roomsInfo[prevIterator].roomVisits.Add(visitList);
+							//visitList.Clear();
+							visitList = new List<Analytic>();
 
 							visitList.Add(analytic);
-							previousRoomName = analytic.Room;
+
+							//set current room as previous
+							//prevSAS = sas;
+							prevIterator = i;
 						}
 						else //else if the point is in the same room
 						{
@@ -139,71 +146,77 @@ public class RenderViewData : MonoBehaviour {
 					}
 				}
 			}
+			roomsInfo[prevIterator].roomVisits.Add(visitList);
+
 
 			CreateLineRender();
 			CreateHeatMap();
 			DisableAllMetrics();
-			//ShowLineRender();
+			ShowLineRender();
 		}
 		else
 		{
 			Debug.Log("Analytics don't exist");
 		}
+		
 	}
 
 
 	private void CreateLineRender()
 	{
-		
-		//iterate through rooms
-		for (int x = 0; x < raycastAnalyticSorted.Count; x++)
+
+		//for each room
+		foreach (SortedAnalyticStorage ri in roomsInfo)
 		{
 
-			//for now we are using a line renderer to show how the user looks around the room.
-			if (raycastAnalyticSorted[x].Count > 0)
+			//if the room has visits assigned to it.
+			if (ri.roomVisits.Count > 0)
 			{
-				for (int z = 0; z < raycastAnalyticSorted[x].Count; z++)
+
+				//for each visit.
+				foreach (List<Analytic> lana in ri.roomVisits)
 				{
-					GameObject connectionGO;
-					connectionGO = new GameObject(raycastAnalyticSorted[x][z][0].Room + " Connections");
 
-					//setup line renderer
-					LineRenderer lr = connectionGO.AddComponent<LineRenderer>();
-					lr.startWidth = 0.2f;
-					lr.endWidth = 0.2f;
-					lr.useWorldSpace = true;
-					lr.positionCount = raycastAnalyticSorted[x][z].Count;
-					lr.material = matTest;
-					lr.startColor = Color.green;
-					lr.endColor = Color.red;
-
-					float previousTimeCode = 0;
-
-					//Iterate through the analytics list.
-					//if the data point's name is this room
-					for (int i = 0; i < raycastAnalyticSorted[x][z].Count; i++)
+					if (lana.Count > 0)
 					{
 
+						GameObject connectionGO;
+						connectionGO = new GameObject(lana[0].Room + " Connections");
 
-						//add a point on the line renderer
-						lr.SetPosition(i, raycastAnalyticSorted[x][z][i].Point);
+						//setup line renderer
+						LineRenderer lr = connectionGO.AddComponent<LineRenderer>();
+						lr.startWidth = 0.2f;
+						lr.endWidth = 0.2f;
+						lr.useWorldSpace = true;
+						lr.positionCount = lana.Count;
+						lr.material = matTest;
+						lr.startColor = Color.green;
+						lr.endColor = Color.red;
 
-						if (raycastAnalyticSorted[x][z][i].TimeStamp > previousTimeCode + timeCodeInterval)
+						float previousTimeCode = 0;
+
+						//for each analytic in the visit.
+						for (int i = 0; i < lana.Count; i++)
 						{
+							//add a point on the line renderer
+							lr.SetPosition(i, lana[i].Point);
 
-							//Instantiate the point.
-							GameObject pointText = Instantiate(pointPrefab);
-							TimePointScript tps = pointText.GetComponent<TimePointScript>();
+							//only show every second.
+							if (lana[i].TimeStamp > previousTimeCode + timeCodeInterval)
+							{
 
-
-							tps.OnCreatePoint(raycastAnalyticSorted[x][z][i].Point, connectionGO.transform, raycastAnalyticSorted[x][z][i].TimeStamp);
-							previousTimeCode = raycastAnalyticSorted[x][z][i].TimeStamp;
+								//Instantiate the point.
+								GameObject pointText = Instantiate(pointPrefab);
+								TimePointScript tps = pointText.GetComponent<TimePointScript>();
+								tps.OnCreatePoint(lana[i].Point, connectionGO.transform, lana[i].TimeStamp);
+								previousTimeCode = lana[i].TimeStamp;
+							}
 						}
-					}
 
-					//set the parent for the line renderer
-					connectionGO.transform.parent = raycastTrackerObjects[x].transform;
-					lineRenders.Add(connectionGO);
+						//set the parent for the line renderer
+						connectionGO.transform.parent = ri.raycastTrackerObject.transform;
+						lineRenders.Add(connectionGO);
+					}
 				}				
 			}
 		}
@@ -211,14 +224,14 @@ public class RenderViewData : MonoBehaviour {
 
 	private void CreateHeatMap()
 	{
-		//foreach room
-		for (int i = 0; i < raycastTrackerObjects.Count; i++)
+		foreach (SortedAnalyticStorage sas in roomsInfo)
 		{
-			HeatMap heatMap = raycastTrackerObjects[i].GetComponent<HeatMap>();
-			for (int x = 0; x < raycastAnalyticSorted[i].Count; x++)
+			HeatMap heatMap = sas.raycastTrackerObject.GetComponent<HeatMap>();
+
+			foreach (List<Analytic> la in sas.roomVisits)
 			{
-				heatMap.setData(raycastAnalyticSorted[i][x]);
-			}			
+				heatMap.setData(la);
+			}
 		}
 	}
 
