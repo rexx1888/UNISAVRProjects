@@ -33,7 +33,7 @@ public class SceneController : MonoBehaviour {
     protected List<ChangeSkyBox> buttons = new List<ChangeSkyBox>();
     protected SceneStateChangeStuff sceneStateCheck;
 
-    public void Start()
+    public void Awake()
     {
         videoPlayer = GetComponent<VideoPlayer>();
         c_Input.OnHold += ShowUI;
