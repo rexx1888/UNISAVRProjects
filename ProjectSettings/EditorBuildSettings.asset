@@ -12,14 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroductionScene.unity
     guid: 6dc3d592d5dded6468bf1228dff029c2
   - enabled: 1
-    path: Assets/Scenes/TutorialScene.unity
-    guid: 0f11c10f58921b947bd9b05b87c34458
-  - enabled: 1
     path: Assets/Scenes/HouseScene.unity
     guid: 2b94256aa369e96408b818c085626ea9
   - enabled: 1
     path: Assets/Scenes/InteractiveScene.unity
     guid: 0f5d01031007d0c46a81b3d8f9fc69dc
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene.unity
+    guid: 0f11c10f58921b947bd9b05b87c34458
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: d03d9a1a85bc6ad408294f19adb26ad8

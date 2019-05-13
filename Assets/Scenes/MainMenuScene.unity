@@ -574,7 +574,7 @@ MonoBehaviour:
   setDifficulty: 1
   difficultyToChangeTo: 0
   loadScene: 1
-  sceneToLoad: 2
+  sceneToLoad: 4
 --- !u!114 &62221388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   setDifficulty: 1
   difficultyToChangeTo: 1
   loadScene: 1
-  sceneToLoad: 2
+  sceneToLoad: 1
 --- !u!114 &147145777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3145,7 +3145,7 @@ MonoBehaviour:
   setDifficulty: 0
   difficultyToChangeTo: 1
   loadScene: 0
-  sceneToLoad: 3
+  sceneToLoad: 2
 --- !u!114 &1740434224
 MonoBehaviour:
   m_ObjectHideFlags: 0
