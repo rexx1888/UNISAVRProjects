@@ -18,7 +18,6 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
     public SimpleObjectPool pool;
     public Transform contentPanel;
     public List<FileInfo> loadIndices = new List<FileInfo>();
-    protected string sessionDataProjectFilePath = "/StreamingAssets";
 	public float userInterfaceDistance;
 
 	//public WallOfCubesController wallController; //the controller for the walls surrounding the camera object. 
@@ -69,7 +68,7 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
 
     public void PopulateLoadButtons()
     {
-        DirectoryInfo d = new DirectoryInfo(Application.dataPath + sessionDataProjectFilePath);
+        DirectoryInfo d = new DirectoryInfo(Application.persistentDataPath);
         FileInfo[] fis = d.GetFiles();
         if (fis.Length > 0)
         {

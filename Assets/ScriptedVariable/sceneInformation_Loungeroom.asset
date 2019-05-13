@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f89eeabb3e35b9419662d51f774675b, type: 3}
   m_Name: sceneInformation_Loungeroom
   m_EditorClassIdentifier: 
-  clip: {fileID: 32900000, guid: 8c69b3de7f2c3fb419e7dd5c2c666176, type: 3}
+  clip: {fileID: 32900000, guid: 1d174465458361d4ea069bf38c4bf71e, type: 3}
   analyticTrackerObject: {fileID: 1088033482474250, guid: 6d728151a24eab149971da07ce07f16e,
     type: 2}
   spawnedAnalyticTracker: {fileID: 0}
