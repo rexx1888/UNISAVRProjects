@@ -31,6 +31,9 @@ using UnityEngine.SceneManagement;
 ///    if loadScene is ticked, it will attempt to load the specified scene (through int value)
 ///    
 /// 
+/// ADDENDUM: ammended by David McCann May 2019, because who uses double tap when you can just click like a normal person.
+///    
+/// 
 /// </summary>
 
 
@@ -40,6 +43,7 @@ public class ButtonToChangeState : MonoBehaviour, IInteractable {
     private VRStandardAssets.Utils.VRInteractiveItem vrII;
 
     #region Uses Canvas Region
+    [Header("Canvas handlers")]
     public bool UseCanvases = true; //does this want to swap canvas?
     public GameObject canvasToFadeInto; //what canvas do you want to swap to?
     public GameState stateToChangeTo; //what state do you want to swap to?
@@ -47,11 +51,13 @@ public class ButtonToChangeState : MonoBehaviour, IInteractable {
     #endregion
 
     #region Set Difficulty Region
+    [Header("Difficulty of Session")]
     public bool setDifficulty = false; //do you want to change difficulty?
     public Difficulty difficultyToChangeTo = Difficulty.UnAssisted; //what difficulty would you like to swap to?
     #endregion
 
     #region Load A Scene Region
+    [Header("Scene Variables")]
     public bool loadScene = false; //would you like to load a scene?
     public int sceneToLoad; //what scene would you like to load?
     #endregion
@@ -68,7 +74,7 @@ public class ButtonToChangeState : MonoBehaviour, IInteractable {
             //add this classes interactive functions to the VRInteractiveItem delegates.
             vrII.OnOver += OnHoverEnter;
             vrII.OnOut += OnHoverExit;
-            vrII.OnDoubleClick += Interact;
+            vrII.OnClick += Interact;
         }
         //is false on startup, make sure it is
         alreadyUsed = false;

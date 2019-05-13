@@ -15,19 +15,22 @@ using VRStandardAssets.Utils;
 
 public class SceneController : MonoBehaviour {
 
+    [Header("Referenced Variables")]
     public DisplayObject userInterface;
     public DisplayObject analyticButtons;
     public DisplayObject loadMenu;
     public GameObject player;
+    [SerializeField] protected VRInput c_Input;
+
+    [Header("Video value for default")]
     public CurrentSceneState currentSceneState;
+
+    [Header("UI placement Values")]
+    public float userInterfaceDistance;
+
     [HideInInspector]
     public VideoPlayer videoPlayer; //the object playing a video
-    public bool testui = false;
-    public float userInterfaceDistance;
-    [SerializeField]protected VRInput c_Input;
-
     protected List<ChangeSkyBox> buttons = new List<ChangeSkyBox>();
-
     protected SceneStateChangeStuff sceneStateCheck;
 
     public void Start()
