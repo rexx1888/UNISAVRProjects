@@ -5,11 +5,13 @@ using UnityEngine;
 public class RaycastTracker : MonoBehaviour {
 
     public Camera mainCamera;
-	public ScriptableObjectFloat SceneTimer;
 	//public ParticleSystem particleSystem;
 	//private ParticleSystem.EmitParams emitParams;
 
+	[Header("Timer interval between analytics")]
 	[SerializeField] private float timerInterval = 0.5f;
+
+	[Header("Scriptable Objects")]
 	[SerializeField] private ScriptableObjectFloat sceneTimer;
 	[SerializeField] private Analytics analytics;
 
@@ -22,7 +24,7 @@ public class RaycastTracker : MonoBehaviour {
 		//emitParams = new ParticleSystem.EmitParams;
 		localTimer = 0;
 		//reset the timer to 0 when the scene begins.
-		SceneTimer.value = 0;
+		sceneTimer.value = 0;
 
 		layermask = LayerMask.GetMask("ViewTracker");
 	}
@@ -50,7 +52,7 @@ public class RaycastTracker : MonoBehaviour {
 		if (GlobalStateManager.curState == GameState.InGame)
 		{
 			//update the timer for every second.
-			SceneTimer.value += Time.deltaTime;
+			sceneTimer.value += Time.deltaTime;
 		}
 	}
 
