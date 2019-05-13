@@ -202,7 +202,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 298515356}
   m_LocalRotation: {x: -0, y: -0.31196168, z: -0, w: 0.9500947}
-  m_LocalPosition: {x: -9.4, y: 0, z: 13}
+  m_LocalPosition: {x: -25, y: 0, z: 30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 435683111}
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tuteInstructions:
-  - text: Welcome to VR Assesments! <br> Have a look around, and when your ready,
+  - text: Welcome to VR Assesments! <br> Have a look around, and when you're ready
       hold your finger on the touch pad.
     linkedObject: {fileID: 0}
     display: {fileID: 0}
@@ -440,12 +440,12 @@ MonoBehaviour:
       to the kitchen.
     linkedObject: {fileID: 643951220}
     display: {fileID: 0}
-  - text: Now that you have transitioned Screens, you should finish tracking the metrics
-      by pressing Stop tracking
+  - text: Now that you have transitioned screens, you should finish tracking the metrics
+      by pressing Stop Tracking
     linkedObject: {fileID: 248607846}
     display: {fileID: 0}
   - text: Good Work! <br> Feel free to examine your metrics now, as well as save and
-      load them.<br> You can Exit at any time
+      load them.<br> You can exit to the Main Menu at any time!?!!
     linkedObject: {fileID: 0}
     display: {fileID: 0}
   c_Input: {fileID: 241831058}
@@ -764,7 +764,7 @@ Prefab:
     - target: {fileID: 224624860002000076, guid: 2cf9bb30cd0164045b69777b8d651dac,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 87.369064
       objectReference: {fileID: 0}
     - target: {fileID: 224624860002000076, guid: 2cf9bb30cd0164045b69777b8d651dac,
         type: 2}
