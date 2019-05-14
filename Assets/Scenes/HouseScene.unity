@@ -501,6 +501,11 @@ Prefab:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114811389533779496, guid: 2cf9bb30cd0164045b69777b8d651dac,
+        type: 2}
+      propertyPath: lineRendererMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 89e66ca790b37f14f8f47a6f102b8b70, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cf9bb30cd0164045b69777b8d651dac, type: 2}
   m_IsPrefabAsset: 0

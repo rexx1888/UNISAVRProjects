@@ -12,6 +12,7 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
     //button setters
     public DisplayObject loadmenu;
     public DisplayObject buttons;
+
     public Analytics analytics; //link to the analytics scriptable object
 	public RenderViewData rvd;
 

@@ -6,6 +6,7 @@ using TMPro;
 
 public struct SortedAnalyticStorage
 {
+	[HideInInspector]
 	public GameObject raycastTrackerObject;
 	public List<List<Analytic>> roomVisits;
 
@@ -14,11 +15,6 @@ public struct SortedAnalyticStorage
 		raycastTrackerObject = room;
 		roomVisits = new List<List<Analytic>>();
 	}
-
-	//public void Initialise()
-	//{
-	//	roomVisits = new List<List<Analytic>>();
-	//}
 
 	public void Clear()
 	{
@@ -31,26 +27,31 @@ public struct SortedAnalyticStorage
 
 public class RenderViewData : MonoBehaviour {
 
+	[Header("Analytics Scriptable object")]
 	[SerializeField] private Analytics analytics;
 
 	//references to the rooms.
+	[HideInInspector]
 	[SerializeField] public List<GameObject> raycastTrackerObjects;
 
-	public List<SortedAnalyticStorage> roomsInfo;
-	
+	[Header("Time interval between points")]
 	public float timeCodeInterval = 1;
-
-	//This needs to be a reference, since if you attempt to create the material programmatically,
-	//Unity fails to pass it into the android build.
-	[SerializeField] private Material matTest;
+	
+	[Header("Heat map materials")]
 	[SerializeField] private Material transparentMaterial;
 	[SerializeField] private Material heatMapMaterial;
 
+	[Header("View line point prefab")]
 	[SerializeField] private GameObject pointPrefab;
-	//private SceneController sceneController;
+	//This needs to be a reference, since if you attempt to create the material programmatically,
+	//Unity fails to pass it into the android build.
+	[SerializeField] private Material lineRendererMaterial;
+
 	private List<GameObject> lineRenders;
-	
-	
+	private List<SortedAnalyticStorage> roomsInfo;
+
+
+
 	private void Start()
 	{
 		//analytics.clearData();
@@ -189,7 +190,7 @@ public class RenderViewData : MonoBehaviour {
 						lr.endWidth = 0.2f;
 						lr.useWorldSpace = true;
 						lr.positionCount = lana.Count;
-						lr.material = matTest;
+						lr.material = lineRendererMaterial;
 						lr.startColor = Color.green;
 						lr.endColor = Color.red;
 
