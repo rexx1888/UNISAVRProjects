@@ -15,7 +15,6 @@ public class LoadAnalyticData : MonoBehaviour, IInteractable
     public DisplayObject menu;
     //public WallOfCubesController wallController; //the controller for the walls surrounding the camera object. 
     private VRInteractiveItem vrII; //the VRInteractiveItem attached to this.
-    public SimpleObjectPool pool;
 	public RenderViewData rvd;
 
 
@@ -45,7 +44,6 @@ public class LoadAnalyticData : MonoBehaviour, IInteractable
     {
         analytics.LoadData(index);
         controlButtons.SetActive(true);
-		//pool.ReturnAllObjects();
 		menu.SetActive(false);
 		rvd.refreshAnalytics();
 

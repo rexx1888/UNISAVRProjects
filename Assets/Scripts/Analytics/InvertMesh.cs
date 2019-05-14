@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+//This script is used to invert the mesh of any object its applied to, and then spits out the object into the assets folder.
+//This was used to create the sphere for rendering the heatmap data to.
+
 [RequireComponent(typeof(MeshFilter))]
 public class InvertMesh : MonoBehaviour {
 

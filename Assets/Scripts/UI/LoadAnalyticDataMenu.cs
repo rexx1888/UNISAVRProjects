@@ -12,6 +12,7 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
     //button setters
     public DisplayObject loadmenu;
     public DisplayObject buttons;
+
     public Analytics analytics; //link to the analytics scriptable object
 	public RenderViewData rvd;
 
@@ -20,7 +21,6 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
     public List<FileInfo> loadIndices = new List<FileInfo>();
 	public float userInterfaceDistance;
 
-	//public WallOfCubesController wallController; //the controller for the walls surrounding the camera object. 
 	private VRInteractiveItem vrII; //the VRInteractiveItem attached to this.
 
     //on start
@@ -90,7 +90,6 @@ public class LoadAnalyticDataMenu : MonoBehaviour, IInteractable
 					buttonScript.menu = loadmenu;
 					buttonScript.controlButtons = buttons;
 					buttonScript.analytics = analytics;
-					buttonScript.pool = pool;
 					buttonScript.rvd = rvd;
 				}
             }

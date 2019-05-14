@@ -19,12 +19,10 @@ using Pixelplacement;
 /// </summary>
 
 [RequireComponent(typeof(VRInteractiveItem)),RequireComponent(typeof(ScriptableObjectFloat))]
-public class FinishApplication : MonoBehaviour, IInteractable {
+public class FinishApplication : MonoBehaviour, IInteractable
+{
 
-
-
-    //public WallOfCubesController wallController; //the controller for the walls surrounding the camera object. 
-    private VRInteractiveItem vrII; //the VRInteractiveItem attached to this.
+	private VRInteractiveItem vrII; //the VRInteractiveItem attached to this.
 	public Analytics analytics;
 
 	//Neaten this later.
