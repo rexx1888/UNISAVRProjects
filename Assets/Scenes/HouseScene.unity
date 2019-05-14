@@ -153,7 +153,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114835284643024344, guid: 5050d48734ffafd4eabbcdb6e91fb799,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114612638934892802, guid: 5050d48734ffafd4eabbcdb6e91fb799, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 5050d48734ffafd4eabbcdb6e91fb799, type: 2}
   m_IsPrefabAsset: 0
 --- !u!114 &241831058 stripped
@@ -506,6 +512,11 @@ Prefab:
       propertyPath: lineRendererMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 89e66ca790b37f14f8f47a6f102b8b70, type: 2}
+    - target: {fileID: 114908392914009338, guid: 2cf9bb30cd0164045b69777b8d651dac,
+        type: 2}
+      propertyPath: sceneToLoad
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cf9bb30cd0164045b69777b8d651dac, type: 2}
   m_IsPrefabAsset: 0
